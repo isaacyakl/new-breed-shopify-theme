@@ -1,0 +1,67 @@
+{%- assign collection = collections[section.settings.collection] -%}
+{%- if collection != blank -%}
+  {% if collection.products_count != 0 %}
+    <hr>
+    <h3 class="h4">{{ 'layout.sidebar.featured_products' | t }}</h3>
+    <div class="grid grid--no-gutters grid--uniform">
+      {% for product in collection.products limit: 4 %}
+        <div class="grid__item medium-up--one-quarter small--one-half">
+          {% include 'product-card', product: product %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{%- endif -%}
+
+
+
+{% schema %}
+{
+  "name": {
+    "da": "Fremhævede produkter",
+    "de": "Vorgestelltes Produkt",
+    "en": "Featured products",
+    "es": "Productos destacados",
+    "fi": "Esittelyssä olevat tuotteet",
+    "fr": "Produits en vedette",
+    "hi": "विशेष रूप से प्रदर्शित उत्पाद",
+    "it": "Prodotti in primo piano",
+    "ja": "おすすめ商品",
+    "ko": "특별 상품",
+    "nb": "Utvalgte produkter",
+    "nl": "Uitgelichte producten",
+    "pt-BR": "Produtos em destaque",
+    "pt-PT": "Produtos em destaque",
+    "sv": "Utvalda produkter",
+    "th": "สินค้าที่แนะนำ",
+    "zh-CN": "特色产品",
+    "zh-TW": "精選產品"
+  },
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": {
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "hi": "कलेक्शन",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      }
+    }
+  ]
+}
+{% endschema %}
