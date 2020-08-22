@@ -16,7 +16,7 @@ Revamp from old style.
 ## To-Do
 - 
 
-## Pre-Edit Procedure
+## New Version Procedure
 Before making changes to the theme follow this procedure to avoid editing on the live website.
 1. Go to the Shopify backend and navigate to Online Store > Themes.
 2. Duplicate the current theme.
