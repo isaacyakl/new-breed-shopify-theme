@@ -31,32 +31,38 @@
          style="height: {{- wrapper_height -}}vw"{% endif %}>
       {%- for block in section.blocks -%}
         <div class="hero__slide hero__slide--{{ block.id }}" {{ block.shopify_attributes }}>
-          <div class="hero__image-content">
-            {%- if block.settings.image != blank -%}
-              <noscript>
-                <div class="hero__image hero__image--{{ block.id }}"{% if block.settings.image %} style="background-image: url('{{ block.settings.image | img_url: '2048x' }}');"{% endif %}></div>
-              </noscript>
-              {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-              <img class="hero__image hero__image--{{ block.id }} lazyload {% unless forloop.first == true %} lazypreload{% endunless %}"
-                {% if forloop.first == true %}
-                  src="{{ block.settings.image | img_url: '300x' }}"
-                {% endif %}
-                data-src="{{ img_url }}"
-                data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
-                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-                data-sizes="auto"
-                data-parent-fit="cover"
-                alt="{{ block.settings.image.alt | escape }}"
-                style="object-position: {{ block.settings.image_position }}">
-            {%- else -%}
-              {%- if block.settings.image == blank -%}
-                <div class="placeholder-background">
-                  {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-                  {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-                </div>
+          {%- if block.settings.button_link != blank -%}
+          <a href="{{ block.settings.button_link }}">
+          {%- endif -%}
+            <div class="hero__image-content">
+              {%- if block.settings.image != blank -%}
+                <noscript>
+                  <div class="hero__image hero__image--{{ block.id }}"{% if block.settings.image %} style="background-image: url('{{ block.settings.image | img_url: '2048x' }}');"{% endif %}></div>
+                </noscript>
+                {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img class="hero__image hero__image--{{ block.id }} lazyload {% unless forloop.first == true %} lazypreload{% endunless %}"
+                  {% if forloop.first == true %}
+                    src="{{ block.settings.image | img_url: '300x' }}"
+                  {% endif %}
+                  data-src="{{ img_url }}"
+                  data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  data-parent-fit="cover"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  style="object-position: {{ block.settings.image_position }}">
+              {%- else -%}
+                {%- if block.settings.image == blank -%}
+                  <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {%- endif -%}
               {%- endif -%}
-            {%- endif -%}
-          </div>
+            </div>
+          {%- if block.settings.button_link != blank -%}
+          </a>
+          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
