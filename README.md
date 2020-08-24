@@ -14,16 +14,15 @@ Cleanup old code.
 Revamp from old style.
 
 ## To-Do
-- Add phone number and email
-- Add free shipping notice
-- Add "Trade Now" button
 - Expand search bar by default on desktop
-- Add Google reviews section
-- Add Instagram widget
 - Add credits in footer
 - Add COVID-19 warning on product pages
 - Add product info badges on product pages
 - Fix slides for mobile (slide buttons cover part of the image)
+- Customize email template with logo, COVID-19 warning etc.
+- Improve page layout and background color for policy pages
+- Customize 404 page with an image
+- Stack info bar in mobile view instead of side-by-side
 
 ## New Version Procedure
 Before making changes to the theme follow this procedure to avoid editing on the live website.
