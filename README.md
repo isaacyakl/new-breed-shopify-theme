@@ -14,15 +14,13 @@ Cleanup old code.
 Revamp from old style.
 
 ## To-Do
-- Expand search bar by default on desktop
-- Add credits in footer
-- Add COVID-19 warning on product pages
 - Add product info badges on product pages
 - Fix slides for mobile (slide buttons cover part of the image)
-- Customize email template with logo, COVID-19 warning etc.
-- Improve page layout and background color for policy pages
-- Customize 404 page with an image
 - Stack info bar in mobile view instead of side-by-side
+- Customize 404 page with an image
+- Update email template with new logo and shorter COVID-19 warning.
+- Expand search bar by default on desktop
+- Improve page layout and background color for policy pages
 
 ## New Version Procedure
 Before making changes to the theme follow this procedure to avoid editing on the live website.
