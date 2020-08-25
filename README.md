@@ -15,7 +15,6 @@ Revamp from old style.
 
 ## To-Do
 - Add product info badges on product pages
-- Fix slides for mobile (slide buttons cover part of the image)
 - Customize 404 page with an image
 - Update email template with new logo and shorter COVID-19 warning.
 - Update email with better product badge info
