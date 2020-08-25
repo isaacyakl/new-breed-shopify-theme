@@ -16,9 +16,9 @@ Revamp from old style.
 ## To-Do
 - Add product info badges on product pages
 - Fix slides for mobile (slide buttons cover part of the image)
-- Stack info bar in mobile view instead of side-by-side
 - Customize 404 page with an image
 - Update email template with new logo and shorter COVID-19 warning.
+- Update email with better product badge info
 - Expand search bar by default on desktop
 - Improve page layout and background color for policy pages
 
@@ -34,9 +34,9 @@ Before making changes to the theme follow this procedure to avoid editing on the
 
 ## Edit Procedure
 Whenever changes are being made follow this procedure.
-1. Start `theme watch`.
+1. Start `theme watch` (or `npm run watch`).
 2. Begin to edit the theme.
-8. Preview the changes by running `theme open` or by finding the new theme in the Shopify backend and selecting "Preview" from its actions menu.
+8. Preview the changes by running `theme open` (or `npm run preview`) or by finding the new theme in the Shopify backend and selecting "Preview" from its actions menu.
 9. Commit changes as necessary.
 
 ## Publish Procedure
