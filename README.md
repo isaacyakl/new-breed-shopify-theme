@@ -14,10 +14,11 @@ Cleanup old code.
 Revamp from old style.
 
 ## To-Do
-- Add product info badges on product pages
+- Add product availability on order emails
+- Add sale points on product pages
 - Customize 404 page with an image
 - Update email template with new logo and shorter COVID-19 warning.
-- Update email with better product badge info
+- Fix stacking reviews text
 - Expand search bar by default on desktop
 - Improve page layout and background color for policy pages
 

@@ -76,9 +76,15 @@
         {%- endunless -%}
       </div>
     {% else %}
-      <div class="product-card__availability">
-        {{ 'products.product.sold_out' | t }}
-      </div>
+        {%- if product.tags contains 'Archive' or product.tags contains 'Archived' or product.tags contains 'Discontinued' -%}
+          <div class="product-card__availability-archived">
+            Discontinued
+          </div>
+        {%- else -%}
+          <div class="product-card__availability">
+            {{ 'products.product.sold_out' | t }}
+          </div>
+        {%- endif -%}
     {% endif %}
   </div>
 

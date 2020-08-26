@@ -1,0 +1,79 @@
+
+{% if template == 'cart' %}
+    {% assign prod = item.product %}
+{% else %}
+    {% assign prod = product %}
+{% endif %}
+{% assign dateInfo = false %}
+{% if prod.tags contains 'Archive' or prod.tags contains 'Archived' or prod.tags contains 'Discontinued' %}
+    <p class="product-single__discontinued prod-status">
+        Discontinued
+    </p>
+{% elsif prod.selected_or_first_available_variant.inventory_quantity >= 1 %}
+    <p class="product-single__available prod-status">
+        Available
+    </p>
+    <p class="product-single__handling">
+        Handling time: 1-2 business days.
+    </p>
+{% elsif prod.selected_or_first_available_variant.inventory_policy == 'continue' %}
+    {% if prod.tags contains 'Pre-Order' %}
+        <p class="product-single__order prod-status">
+            Pre-Order
+        </p>
+        {% for tag in prod.tags %}
+            {% if tag contains 'Releases ' %}
+                Releases: {{ tag | remove_first: "Releases " }}.
+                {% assign dateInfo = true %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% if dateInfo == false %}
+            <p class="product-single__handling">
+                See description for release date.
+            </p>
+        {% endif %}
+        <p class="product-single__terms text-center">
+            By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Pre-Order Terms">terms</a>.
+        </p>
+    {% elsif prod.tags contains 'Back Order' %}
+        <p class="product-single__back-order prod-status">
+            Back Order
+        </p>
+        {% for tag in prod.tags %}
+            {% if tag contains "Back In Stock" %}
+                Back in stock: {{ tag | remove_first: "Back In Stock " }}.
+                {% assign dateInfo = true %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% if dateInfo == false %}
+            <p class="product-single__handling">
+                Call for more info.
+            </p>
+        {% endif %}
+    {% elsif prod.tags contains 'Custom Order' %}
+        <p class="product-single__order prod-status">
+            Custom Order
+        </p>
+        <p class="product-single__handling">
+            See description for fulfillment time.
+        </p>
+        <p class="product-single__terms text-center">
+            By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Customer Order Terms">terms</a>.
+        </p>
+    {% else %}
+        <p class="product-single__available prod-status">
+            Available
+        </p>
+        {% if prod.type == "Digital" %}
+            <p class="product-single__handling">
+                Fulfilled digitally.
+            </p>
+        {% else %}
+            <p class="product-single__handling">
+                Handling time: 3-4 business days.
+            </p>
+        {% endif %}
+    {% endif %}
+{% endif %}
