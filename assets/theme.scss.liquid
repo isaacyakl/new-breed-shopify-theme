@@ -3934,6 +3934,12 @@ html {
   color: $color-accent;
 }
 
+.product-card__availability-archived {
+  @include nav-text-style();
+  font-size: em(14);
+  color: red;
+}
+
 .product-card__brand,
 .product-card__price {
   font-size: em(14);
@@ -4007,10 +4013,41 @@ html {
   font-size: em($font-size-base - 1);
 }
 
+.product-single__warning::before {
+  content: "⚠️";
+}
+
 .product-single__warning {
   padding: 0.5rem;
   background-color: #D4AC0D;
   border-radius: 0.3rem;
+}
+
+.product-single__discontinued {
+  color: red;
+}
+
+.product-single__order {
+  color: blue;
+}
+
+.product-single__back-order {
+  color: #2a9aa5;
+}
+
+.product-single__available {
+  color: green;
+}
+
+.product-single__handling {
+  font-size: em($font-size-base - 1);
+}
+
+.product-single__terms {
+  padding: 0.5rem;
+  background-color: #272727;
+  border-radius: 0.3rem;  
+  font-size: em($font-size-base - 1);
 }
 
 .product-unit-price {
@@ -4022,6 +4059,9 @@ html {
   display: block;
 }
 
+.prod-status {
+  text-transform: uppercase;
+}
 
 /*================ Product form ================*/
 // Force selects, inputs, and buttons to be the same height,

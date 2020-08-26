@@ -22,6 +22,7 @@
                   <a href="{{ item.url }}" class="h5">
                     {{ item.product.title }}
                   </a>
+                  {% include 'product-availability' %}
                   {% unless item.variant.title contains 'Default' %}
                     <p>{{ item.variant.title }}</p>
                   {% endunless %}
