@@ -15,7 +15,6 @@ Revamp from old style.
 
 ## To-Do
 - Add product availability on order emails
-- Show price on discontinued products
 - Customize 404 page with an image
 - Update email template with new logo and shorter COVID-19 warning.
 - Fix stacking reviews text
