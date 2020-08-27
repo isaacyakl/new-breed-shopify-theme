@@ -19,6 +19,7 @@ Revamp from old style.
 - Update email template with new logo and shorter COVID-19 warning.
 - Fix stacking reviews text
 - Expand search bar by default on desktop
+- Update SKU when product options are changed
 - Improve page layout and background color for policy pages
 
 ## New Version Procedure

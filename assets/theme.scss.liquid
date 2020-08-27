@@ -4050,6 +4050,10 @@ html {
   font-size: em($font-size-base - 1);
 }
 
+.product-single__sku {
+  font-size: em($font-size-base - 2.5);
+}
+
 .product-unit-price {
   font-size: em(12);
   color: $color-body-text;
@@ -4203,6 +4207,13 @@ html {
   }
 }
 
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+     -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+}
 
 /*================ Product image and thumbnail layout ================*/
 .photos__item--main {
