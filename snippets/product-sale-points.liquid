@@ -1,0 +1,76 @@
+{% comment %} Reviews {% endcomment %}
+
+{% comment %} Free Shipping {% endcomment %}
+{%- if product.selected_or_first_available_variant.price >= 15000 -%}
+    <p class="prod-sale-point">
+        <a href="/policies/shipping-policy">
+            📦 Free shipping eligible
+        </a>
+    </p>
+{%- endif -%}
+
+{% comment %} Trade {% endcomment %}
+{%- if product.selected_or_first_available_variant.price >= 4500 -%}
+    <p class="prod-sale-point">
+        <a href="/pages/why-trade">
+            🤝 Trade toward this product
+        </a>
+    </p>
+{%- endif -%}
+
+{% comment %} Warranty {% endcomment %}
+{% comment %} Used Gear {% endcomment %}
+{%- if product.tags contains 'Pre-Owned' -%}
+    {% comment %}
+    <p class="prod-sale-point">
+        <a href="#freelifetimelabor">
+            🔧 Free lifetime labor included
+        </a>
+    </p>
+    {% endcomment %}
+    {% comment %} Used Gun {% endcomment %}
+    {%- if product.type == 'Gun' -%}
+        <p class="prod-sale-point">
+            <a href="/pages/warranty#usedmarkerwarranty">
+                🧾 Free 30-day warranty included
+            </a>
+        </p>
+    {%- endif -%}
+{% comment %} New Gear {% endcomment %}
+{%- else -%}
+    {% comment %} New Gun {% endcomment %}
+    {%- if product.type == 'Gun' -%}
+    <p class="prod-sale-point">
+        <a href="/pages/warranty#newmarkerwarranty">
+            🧾 Manufacturer warranty included
+        </a>
+    </p>
+    {%- else -%}
+        {%- if product.selected_or_first_available_variant.price >= 4500 -%}
+            <p class="prod-sale-point">
+                <a href="/pages/warranty#manufacturerwarranty">
+                    🧾 Manufacturer warranty included
+                </a>
+            </p>
+        {%- endif -%}
+    {%- endif -%}
+{%- endif -%}
+
+
+
+{% comment %} Financing {% endcomment %}
+{%- if product.selected_or_first_available_variant.price >= 7500 -%}
+    <p class="prod-sale-point">
+        <a href="/pages/financing">
+            💲 Financing available
+        </a>
+    </p>
+{%- endif -%}
+{% comment %} Layaway {% endcomment %}
+{%- if product.selected_or_first_available_variant.price >= 30000 -%}
+    <p class="prod-sale-point">
+        <a href="/pages/layaway">
+            🔖 Layaway eligible
+        </a>
+    </p>
+{%- endif -%}
