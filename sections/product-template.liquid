@@ -237,6 +237,12 @@
 
         {%- endunless -%}
         
+        <p class="product-single__sku">
+          <span class="disable-select">SKU: </span>{{ product.selected_or_first_available_variant.sku }}
+        </p>
+
+        <hr>
+
         <div class="rte product-single__description" itemprop="description">
           {{ product.description }}
         </div>
