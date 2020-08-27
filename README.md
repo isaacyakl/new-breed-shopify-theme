@@ -6,7 +6,7 @@ Shopify Theme Kit References:
 - [Basic Quick Setup Video](https://www.youtube.com/watch?v=SWqeAM8MCFU)
 
 ## Version
-### [2020-08-21] 2.0.0
+### [2020-08-27] 2.0.0
 Restart based on [Venture](https://themes.shopify.com/themes/venture/styles/snowboards) theme.
 ### [2020-08-20] 1.1.1
 Cleanup old code.
@@ -29,7 +29,7 @@ Before making changes to the theme follow this procedure to avoid editing on the
 3. Publish the duplicated theme.
 4. Rename the old, unpublished theme with the newer version number you will be working on (e.g. "New Breed 2.0.1").
 5. Rename the duplicated, published theme so that it does not have "Copy" in it but still represents the older theme version number (e.g. "New Breed 2.0.0").
-6. Update `package.json` and `README.md` to reflect the newer version.
+6. Update `package.json` with the newer version number.
 
 ## Edit Procedure
 Whenever changes are being made follow this procedure.
@@ -40,7 +40,9 @@ Whenever changes are being made follow this procedure.
 
 ## Publish Procedure
 Once a new version is ready to go live refer to this procedure.
-1. Go to the Shopify backend and navigate to Online Store > Themes.
-2. Find the theme with the new version that you have been editing (e.g. "New Breed 2.0.1").
-3. From the new theme's actions menu select "Publish".
-4. Verify that it has successfully publish to the live site and is now the current theme.
+1. Add the release date, new version number, and description to the `README.md` version section.
+2. Commit with the message formatted: `Publish v<version#>`.
+3. Go to the Shopify backend and navigate to Online Store > Themes.
+4. Find the theme with the new version that you have been editing (e.g. "New Breed 2.0.1").
+5. From the new theme's actions menu select "Publish".
+6. Verify that it has successfully publish to the live site and is now the current theme.
