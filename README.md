@@ -15,12 +15,12 @@ Revamp from old style.
 
 ## To-Do
 - Add product availability on order emails
-- Customize 404 page with an image
 - Update email template with new logo and shorter COVID-19 warning.
 - Fix stacking reviews text
 - Expand search bar by default on desktop
-- Update SKU when product options are changed
 - Improve page layout and background color for policy pages
+- Update SKU when product options are changed
+- Customize 404 page with an image
 
 ## New Version Procedure
 Before making changes to the theme follow this procedure to avoid editing on the live website.
