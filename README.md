@@ -14,7 +14,6 @@ Cleanup old code.
 Revamp from old style.
 
 ## To-Do
-- Add product reviews section
 - Add product availability on order emails
 - Show price on discontinued products
 - Customize 404 page with an image
