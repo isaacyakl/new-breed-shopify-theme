@@ -16,6 +16,7 @@ Revamp from old style.
 ## To-Do
 - Add product availability on order emails
 - Update email template with new logo and shorter COVID-19 warning.
+- Improve link color contrast visibility
 - Expand search bar by default on desktop
 - Improve page layout and background color for policy pages
 - Update SKU when product options are changed
