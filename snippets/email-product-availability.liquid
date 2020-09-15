@@ -1,0 +1,26 @@
+{%- comment -%} Email product availability info used in email notifications: Order confirmation, Order edited, Order edited invoice, Draft order invoice, Email cart from POS, Abandoned checkout {%- endcomment -%} {%- comment -%} In Stock {%- endcomment -%} {%- if line.product.selected_or_first_available_variant.inventory_quantity >= 1 -%}
+<p style="font-size: small">Handling time: 1-2 business days. <span style="color: red; font-size: x-small">&dagger;</span></p>
+{%- comment -%} Out of Stock but still Available {%- endcomment -%} {%- elsif line.product.selected_or_first_available_variant.inventory_policy == 'continue' -%} {%- comment -%} Pre-Order {%- endcomment -%} {%- if line.product.tags contains 'Pre-Order' -%}
+<p style="font-size: small">
+	<strong>Pre-Order</strong><br />
+	See description for release date.<br />
+	By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Pre-Order Terms">terms</a>.
+</p>
+{%- comment -%} Back Order {%- endcomment -%} {%- elsif line.product.tags contains 'Back Order' -%}
+<p style="font-size: small">
+	<strong>Back Order</strong><br />
+	Call for more info.
+</p>
+{%- comment -%} Custom Order {%- endcomment -%} {%- elsif line.product.tags contains 'Custom Order' -%}
+<p style="font-size: small">
+	<strong>Custom Order</strong><br />
+	See description for fulfillment time.<br />
+	By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Customer Order Terms">terms</a>.
+</p>
+{%- comment -%} Drop Shipping / No Inventory Tracking / Digital Product {%- endcomment -%} {%- else -%} {%- comment -%} Digital Product {%- endcomment -%} {%- if line.product.type == "Digital" -%}
+<p style="font-size: small">Fulfilled digitally. Check for a follow-up email.</p>
+{%- comment -%} Dropshipping / No Inventory Tracking {%- endcomment -%} {%- else -%} {%- comment -%} Search for handling time tag {%- endcomment -%} {%- assign found = false -%} {%- for tag in line.product.tags -%} {%- if tag contains 'HT ' -%} {%- if tag contains 'Minutes' or tag contains 'Hours' or tag contains 'Days' or tag contains 'Weeks' or tag contains 'Months' -%}
+<p style="font-size: small">Handling time: {{ tag | remove_first: "HT " | downcase }}. <span style="color: red; font-size: x-small">&dagger;</span></p>
+{%- assign found = true -%} {%- break -%} {%- endif -%} {%- endif -%} {%- endfor -%} {%- comment -%} No handling time tag found so resort to default {%- endcomment -%} {%- if found == false -%}
+<p style="font-size: small">Handling time: 3-4 business days. <span style="color: red; font-size: x-small">&dagger;</span></p>
+{%- endif -%} {%- endif -%} {%- endif -%} {%- endif -%}
