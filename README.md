@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2020-09-17] 2.0.1
+
+Update email notification styling and product availability info including gift card design.
+
 ### [2020-08-27] 2.0.0
 
 Restart based on [Venture](https://themes.shopify.com/themes/venture/styles/snowboards) theme.
