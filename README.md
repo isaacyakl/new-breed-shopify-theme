@@ -29,6 +29,8 @@ Revamp from old style.
 
 -  Improve link color contrast visibility
 -  Expand search bar by default on desktop
+-  Hide ability to write reviews on Archived/Discontinued products
+-  Hide Archived/Discontinued products from collection pages
 -  Improve page layout and background color for policy pages
 -  Update SKU when product options are changed
 -  Customize 404 page with an image
