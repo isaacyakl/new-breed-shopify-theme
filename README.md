@@ -27,6 +27,7 @@ Revamp from old style.
 
 ## To-Do
 
+-  Add Discount note to email notifications
 -  Improve link color contrast visibility
 -  Expand search bar by default on desktop
 -  Hide ability to write reviews on Archived/Discontinued products
