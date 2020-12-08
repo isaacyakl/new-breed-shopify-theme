@@ -339,10 +339,10 @@ $gutter-slideshow: 0.625rem; // 10px
 {% endif %}
 {% if settings.product_images_padding %}
   $product-image-padding: 25px;
-  $product-image-margin-bottom: 60px;
+  $product-image-margin-bottom: 81px;
 {% else %}
   $product-image-padding: 0;
-  $product-image-margin-bottom: 80px;
+  $product-image-margin-bottom: 108px;
 {% endif %}
 
 /*================ Product slider ================*/
@@ -3926,6 +3926,9 @@ html {
   font-weight: $font-weight-body-bold;
   color: $color-heading;
   white-space: normal;
+  line-height: 1.3rem;
+  max-height: 2.6rem;
+  overflow: hidden;
 }
 
 .product-card__availability {
