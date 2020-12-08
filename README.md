@@ -27,12 +27,19 @@ Revamp from old style.
 
 ## To-Do
 
--  Add Discount note to email notifications
+-  Hide end of long product names in product titles so that the image can always be seen as a square
+-  Improve COVID-19 notice to specify that some products may not be available
+-  Do not display products tagged as "Discontinued" in collections
+-  Change email emoji to the envelope/mail instead of email
+-  Make the search bar a more prominent feature
+-  Add Pre-Order Release date tag
+-  Turn of Pre-Order if Pre-Order Release date tag is reached
 -  Improve link color contrast visibility
 -  Expand search bar by default on desktop
 -  Hide ability to write reviews on Archived/Discontinued products
 -  Hide Archived/Discontinued products from collection pages
 -  Improve page layout and background color for policy pages
+-  Move SKU field below description on product pages
 -  Update SKU when product options are changed
 -  Customize 404 page with an image
 
