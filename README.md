@@ -27,7 +27,6 @@ Revamp from old style.
 
 ## To-Do
 
--  Hide end of long product names in product titles so that the image can always be seen as a square
 -  Improve COVID-19 notice to specify that some products may not be available
 -  Do not display products tagged as "Discontinued" in collections
 -  Change email emoji to the envelope/mail instead of email
