@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2020-12-09] 2.0.2
+
+Add various small improvements.
+
 ### [2020-09-17] 2.0.1
 
 Update email notification styling and product availability info including gift card design.
