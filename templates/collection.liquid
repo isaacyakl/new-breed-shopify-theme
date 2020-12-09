@@ -25,6 +25,10 @@
   <div class="grid grid--no-gutters grid--uniform">
 
     {% for product in collection.products %}
+      {% comment %} Hide discontinued products {% endcomment %}
+      {% if product.tags contains 'Discontinued' %}
+        {% continue %}
+      {% endif %}
       <div class="grid__item small--one-half medium-up--one-fifth">
         {% include 'product-card', product: product %}
       </div>

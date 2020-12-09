@@ -27,7 +27,7 @@ Revamp from old style.
 
 ## To-Do
 
--  Do not display products tagged as "Discontinued" in collections
+-  Do not display products tagged as "Discontinued" in collections (Currently can hide products with this tag but the product rows become incomplete; need to filter collection.products to only show products w/o the "Discontinued" tag; see collection.liquid:28-31 for test code)
 -  Change email emoji to the envelope/mail instead of email
 -  Make the search bar a more prominent feature
 -  Add Pre-Order Release date tag
