@@ -28,7 +28,6 @@ Revamp from old style.
 ## To-Do
 
 -  Do not display products tagged as "Discontinued" in collections
--  Change email emoji to the envelope/mail instead of email
 -  Make the search bar a more prominent feature
 -  Add Pre-Order Release date tag
 -  Turn of Pre-Order if Pre-Order Release date tag is reached
