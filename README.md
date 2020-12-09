@@ -27,7 +27,6 @@ Revamp from old style.
 
 ## To-Do
 
--  Improve COVID-19 notice to specify that some products may not be available
 -  Do not display products tagged as "Discontinued" in collections
 -  Change email emoji to the envelope/mail instead of email
 -  Make the search bar a more prominent feature
