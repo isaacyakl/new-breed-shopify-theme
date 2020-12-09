@@ -27,18 +27,16 @@ Revamp from old style.
 
 ## To-Do
 
--  Do not display products tagged as "Discontinued" in collections
--  Make the search bar a more prominent feature
--  Add Pre-Order Release date tag
--  Turn of Pre-Order if Pre-Order Release date tag is reached
+-  Improve page layout and background color for policy pages
 -  Improve link color contrast visibility
--  Expand search bar by default on desktop
+-  Customize 404 page with an image
+-  Add Pre-Order Release date tag
+-  Turn off Pre-Order if Pre-Order Release date tag is reached
+-  Expand search bar by default on desktop and make search bar more prominent
+-  Do not display products tagged as "Discontinued" in collections
 -  Hide ability to write reviews on Archived/Discontinued products
 -  Hide Archived/Discontinued products from collection pages
--  Improve page layout and background color for policy pages
--  Move SKU field below description on product pages
 -  Update SKU when product options are changed
--  Customize 404 page with an image
 
 ## New Version Procedure
 
