@@ -31,6 +31,7 @@ Revamp from old style.
 
 ## To-Do
 
+-  Make social media icons open in new tab
 -  Add Pre-Order Release date tag
 -  Turn off Pre-Order if Pre-Order Release date tag is reached
 -  Expand search bar by default on desktop and make search bar more prominent
