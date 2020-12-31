@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2020-12-30] 2.1.0
+
+Add breadcrumbs
+
 ### [2020-12-09] 2.0.2
 
 Add various small improvements.
