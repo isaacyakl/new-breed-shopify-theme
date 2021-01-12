@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-01-12] 2.1.1
+
+Fix used warranty notice and open social in new tab
+
 ### [2020-12-30] 2.1.0
 
 Add breadcrumbs
