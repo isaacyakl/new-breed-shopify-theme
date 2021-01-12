@@ -20,7 +20,7 @@
 
 {% comment %} Warranty {% endcomment %}
 {% comment %} Used Gear {% endcomment %}
-{%- if product.tags contains 'Pre-Owned' -%}
+{%- if product.tags contains 'Pre-Owned' or product.tags contains 'Used' -%}
     {% comment %}
     <p class="prod-sale-point">
         <a href="#freelifetimelabor">
