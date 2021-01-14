@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-01-14] 2.2.0
+
+Add support for media including YouTube, 3d models, and videos
+
 ### [2021-01-12] 2.1.1
 
 Fix used warranty notice and open social in new tab
