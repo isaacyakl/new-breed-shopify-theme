@@ -39,7 +39,6 @@ Revamp from old style.
 
 ## To-Do
 
--  Add support for YouTube video embeds via Shopify media upload feature
 -  Add Pre-Order Release date tag
 -  Turn off Pre-Order if Pre-Order Release date tag is reached
 -  Expand search bar by default on desktop and make search bar more prominent
