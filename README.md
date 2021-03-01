@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-03-01] 2.2.1
+
+Correct when COVID delay and availability notices appear on product pages
+
 ### [2021-01-14] 2.2.0
 
 Add support for media including YouTube, 3d models, and videos
@@ -43,8 +47,6 @@ Revamp from old style.
 
 ## To-Do
 
--  Hide COVID warning on in-stock items
--  Fix sold out items showing available and handling time on product pages
 -  Add default image in product thumbnail but not on product page if no images are uploaded
 -  Truncate long title text for featured product sections
 -  Discontinued products should only display in collections and featured sections if they are in stock
