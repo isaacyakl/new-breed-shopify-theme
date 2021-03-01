@@ -192,9 +192,11 @@
 
             <hr>
             
-            <p class="product-single__warning text-center">
-              COVID-19 restrictions may delay orders 2-4 weeks or impact availability.
-            </p>
+            {% unless product.selected_or_first_available_variant.inventory_quantity > 0%}
+              <p class="product-single__warning text-center">
+                COVID-19 restrictions may delay orders 2-4 weeks or impact availability.
+              </p>
+            {% endunless %}
             
             {% include 'product-sale-points' %}
 
