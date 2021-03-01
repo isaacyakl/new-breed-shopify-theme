@@ -44,8 +44,8 @@ Revamp from old style.
 ## To-Do
 
 -  Hide COVID warning on in-stock items
--  Add default image in product thumbnail but not on product page if no images are uploaded
 -  Fix sold out items showing available and handling time on product pages
+-  Add default image in product thumbnail but not on product page if no images are uploaded
 -  Truncate long title text for featured product sections
 -  Discontinued products should only display in collections and featured sections if they are in stock
 -  Remove discontinued label from product card

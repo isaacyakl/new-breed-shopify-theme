@@ -192,7 +192,8 @@
 
             <hr>
             
-            {% unless product.selected_or_first_available_variant.inventory_quantity > 0%}
+            {% comment %}If variants are in stock or inventory policies do not allow dropshipping then do not show the COVID-19 delay warning{% endcomment %}
+            {% unless product.selected_or_first_available_variant.inventory_quantity > 0 or product.selected_or_first_available_variant.inventory_policy == "deny" %}
               <p class="product-single__warning text-center">
                 COVID-19 restrictions may delay orders 2-4 weeks or impact availability.
               </p>
