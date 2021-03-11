@@ -13,7 +13,7 @@
   {% assign image = product.featured_image %}
   <div class="product-card__image-container">
     <div class="product-card__image-wrapper">
-      <div class="product-card__image js" style="max-width: {% include 'image-width' with image: image, width: 235 %}px;" data-image-id="{{ image.id }}" data-image-with-placeholder-wrapper>
+      <div class="product-card__image js {% if product.images.size > 1 %}hoverImageFeat{% endif %}" style="max-width: {% include 'image-width' with image: image, width: 235 %}px;" data-image-id="{{ image.id }}" data-image-with-placeholder-wrapper>
         <div style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
           {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
           <img class="lazyload"
@@ -30,6 +30,23 @@
       <noscript>
         <img src="{{ product.featured_image.src | img_url: '480x480' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card__image">
       </noscript>
+      {% if product.images.size > 1 %}
+          {% assign imageHvr = product.images[1] %}
+          <div class="product-card__image js hoverImageAlt" style="max-width: {% include 'image-width' with imageHvr: imageHvr, width: 235 %}px;" data-image-id="{{ imageHvr.id }}" data-image-with-placeholder-wrapper>
+            <div style="padding-top:{{ 1 | divided_by: imageHvr.aspect_ratio | times: 100 }}%;">
+              {% assign img_url = imageHvr | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+              <img class="lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[100, 140, 180, 250, 305, 440, 610, 720, 930, 1080]"
+                data-aspectratio="{{ imageHvr.aspect_ratio }}"
+                data-sizes="auto"
+                data-parent-fit="contain"
+                data-image
+                alt="{{ imageHvr.alt | escape }}">
+            </div>
+            <div class="placeholder-background placeholder-background--animation" data-image-placeholder></div>
+          </div>
+        {% endif %}
     </div>
   </div>
   <div class="product-card__info">
@@ -100,7 +117,9 @@
     </div>
   {% endif %}
   <div class="product-card__overlay">
+    {% comment %}
     {% assign view_string_length = 'products.product.view' | t | size %}
     <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{{ 'products.product.view' | t }}</span>
+    {% endcomment %}
   </div>
 </a>

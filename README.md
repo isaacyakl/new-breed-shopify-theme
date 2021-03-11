@@ -49,7 +49,6 @@ Revamp from old style.
 
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
--  Add second image reveal on hover for product cards
 -  Add default image in product thumbnail but not on product page if no images are uploaded
 -  Truncate long title text for featured product sections
 -  Discontinued products should only display in collections and featured sections if they are in stock
