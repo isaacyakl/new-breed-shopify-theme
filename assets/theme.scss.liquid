@@ -3902,6 +3902,21 @@ html {
   }
 }
 
+.hoverImageFeat {
+  .product-card:hover &,
+  .product-card:focus & {
+    display: none;
+  }
+}
+
+.hoverImageAlt {
+  height: 0px;
+  .product-card:hover &,
+  .product-card:focus & {
+    height: initial;
+  }
+}
+
 /*================ Product meta info ================*/
 .product-card__info {
   position: absolute;
