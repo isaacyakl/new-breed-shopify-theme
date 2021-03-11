@@ -47,13 +47,14 @@ Revamp from old style.
 
 ## To-Do
 
+-  Add Back Order and Pre-Order Release date tag
+-  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
+-  Add second image reveal on hover for product cards
 -  Add default image in product thumbnail but not on product page if no images are uploaded
 -  Truncate long title text for featured product sections
 -  Discontinued products should only display in collections and featured sections if they are in stock
 -  Remove discontinued label from product card
 -  Discontinued products can still be purchased if they are in stock
--  Add Pre-Order Release date tag
--  Turn off Pre-Order if Pre-Order Release date tag is reached
 -  Expand search bar by default on desktop and make search bar more prominent
 -  Add predictive search feature — https://shopify.dev/tutorials/add-predictive-search-to-your-shopify-theme
 -  Do not display products tagged as "Discontinued" in collections
@@ -70,8 +71,8 @@ Before making changes to the theme follow this procedure to avoid editing on the
 2. Duplicate the current theme.
 3. Find the duplicated theme with "Copy" in the name.
 4. Publish the duplicated theme.
-5. Rename the old, unpublished theme with the newer version number you will be working on (e.g. "New Breed 2.2.2").
-6. Rename the duplicated, published theme so that it does not have "Copy" in it but still represents the older theme version number (e.g. "New Breed 2.2.1").
+5. Rename the old, unpublished theme with the newer version number you will be working on (e.g. "New Breed 2.3.0").
+6. Rename the duplicated, published theme so that it does not have "Copy" in it but still represents the older theme version number (e.g. "New Breed 2.2.2").
 7. Update `package.json` with the newer version number.
 
 ## Edit Procedure
@@ -90,6 +91,6 @@ Once a new version is ready to go live refer to this procedure.
 1. Add the release date, new version number, and description to the `README.md` version section.
 2. Commit with the message formatted: `Publish v<version#>`.
 3. Go to the Shopify backend and navigate to Online Store > Themes.
-4. Find the theme with the new version that you have been editing (e.g. "New Breed 2.2.2").
+4. Find the theme with the new version that you have been editing (e.g. "New Breed 2.3.0").
 5. From the new theme's actions menu select "Publish".
 6. Verify that it has successfully publish to the live site and is now the current theme.
