@@ -28,9 +28,23 @@
         <p class="product-single__order prod-status">
             Pre-Order
         </p>
+        {%- comment -%} Search for release tag {%- endcomment -%}
+        {%- assign found = false -%}
+        {%- for tag in prod.tags -%}
+            {%- if tag contains 'Releases ' -%}
+                <p class="product-single__handling">
+                    <strong>Releases:</strong> <u>{{ tag | remove_first: "Releases " }}</u>
+                </p>
+                {%- assign found = true -%}
+                {%- break -%}
+            {%- endif -%}
+        {%- endfor -%}
+        {%- comment -%} No release tag found so resort to default {%- endcomment -%}
+        {%- if found == false -%}
         <p class="product-single__handling">
-            See description for release date.
+            <strong>Releases:</strong> <u>See description</u>
         </p>
+        {%- endif -%}
         <p class="product-single__terms text-center">
             By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Pre-Order Terms">terms</a>.
         </p>
@@ -39,16 +53,30 @@
         <p class="product-single__back-order prod-status">
             Back Order
         </p>
+        {%- comment -%} Search for release tag {%- endcomment -%}
+        {%- assign found = false -%}
+        {%- for tag in prod.tags -%}
+            {%- if tag contains 'In Stock ' -%}
+                <p class="product-single__handling">
+                    <strong>In Stock:</strong> <u>{{ tag | remove_first: "In Stock " }}</u>
+                </p>
+                {%- assign found = true -%}
+                {%- break -%}
+            {%- endif -%}
+        {%- endfor -%}
+        {%- comment -%} No back tag found so resort to default {%- endcomment -%}
+        {%- if found == false -%}
         <p class="product-single__handling">
-            Call for more info.
+            <strong>In Stock:</strong> <u>See description</u>
         </p>
+        {%- endif -%}
     {%- comment -%} Custom Order {%- endcomment -%}
     {%- elsif prod.tags contains 'Custom Order' -%}
         <p class="product-single__order prod-status">
             Custom Order
         </p>
         <p class="product-single__handling">
-            See description for fulfillment time.
+            <strong>See description for fulfillment time.</strong>
         </p>
         <p class="product-single__terms text-center">
             By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Customer Order Terms">terms</a>.
