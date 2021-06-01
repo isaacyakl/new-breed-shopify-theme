@@ -49,6 +49,7 @@ Revamp from old style.
 
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
+-  Fix second image peek size issue: e.g. https://newbreedpb.com/collections/magazines/Airsoft?page=3 [second-image-peek-size-bug.gif](second-image-peek-size-bug.gif)
 -  Add default image in product thumbnail but not on product page if no images are uploaded
 -  Truncate long title text for featured product sections
 -  Discontinued products should only display in collections and featured sections if they are in stock
