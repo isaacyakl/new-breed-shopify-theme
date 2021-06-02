@@ -1,12 +1,12 @@
-{%- unless image == blank -%}
-  {%- if image.aspect_ratio < 1.0 -%}
-    {%- assign maximum_width = width | times: image.aspect_ratio -%}
-    {%- if image.height <= width -%}
-      {%- assign maximum_width = image.width -%}
+{%- unless image-width == blank -%}
+  {%- if image-width.aspect_ratio < 1.0 -%}
+    {%- assign maximum_width = width | times: image-width.aspect_ratio -%}
+    {%- if image-width.height <= width -%}
+      {%- assign maximum_width = image-width.width -%}
     {%- endif -%}
   {%- else -%}
-    {%- if image.width <= width -%}
-      {%- assign maximum_width = image.width -%}
+    {%- if image-width.width <= width -%}
+      {%- assign maximum_width = image-width.width -%}
     {%- else -%}
       {%- assign maximum_width = width -%}
     {%- endif -%}
