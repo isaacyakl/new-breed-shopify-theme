@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-06-07] 2.3.0
+
+Add second-image peek feature and support for pre-order release and back-in-stock dates
+
 ### [2021-03-01] 2.2.1
 
 Correct when COVID delay and availability notices appear on product pages
@@ -92,4 +96,4 @@ Once a new version is ready to go live refer to this procedure.
 3. Go to the Shopify backend and navigate to Online Store > Themes.
 4. Find the theme with the new version that you have been editing (e.g. "New Breed 2.3.0").
 5. From the new theme's actions menu select "Publish".
-6. Verify that it has successfully publish to the live site and is now the current theme.
+6. Verify that it has successfully published to the live site and is now the current theme.
