@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-09-09] 2.3.1
+
+Remove COVID-19 warnings (product pages and email notices) and delete unnecessary comments
+
 ### [2021-06-07] 2.3.0
 
 Add second-image peek feature and support for pre-order release and back-in-stock dates
