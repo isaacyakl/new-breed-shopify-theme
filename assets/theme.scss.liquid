@@ -2248,7 +2248,26 @@ textarea {
 
 // Fix Safari close button position bug - http://codepen.io/cshold/pen/yNWoNo
 input[type="search"] {
+  outline: none;
   padding-right: 0;
+  border-radius: 0.3rem;
+  border: 1px solid #D3D3D3;
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+}
+
+input[type="search"]:hover{
+  box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+}
+
+input[type="search"]:focus {
+  box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+  outline-width: 0px;
+}
+
+.search-btn {
+  color: white;
+  border-radius: 0.3rem;
 }
 
 select {
@@ -6932,4 +6951,11 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+div.search-prod-not-found {
+  margin: 2rem 0rem;
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
 }

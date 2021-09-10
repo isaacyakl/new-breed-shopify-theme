@@ -124,7 +124,7 @@
           <form action="{{ routes.search_url }}" method="get" class="site-header__search small--hide" role="search">
             {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
               <label for="SiteNavSearch" class="visually-hidden">{{ 'general.search.placeholder' | t }}</label>
-              <input type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="site-header__search-input">
+              <input type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="site-header__search-input"  autocomplete="off">
 
             <button type="submit" class="text-link site-header__link site-header__search-submit">
               {% include 'icon-search' %}
