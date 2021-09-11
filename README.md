@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-09-10] 2.4.0
+
+Improve search section and add product missing info on search pages
+
 ### [2021-09-09] 2.3.1
 
 Remove COVID-19 warnings (product pages and email notices) and delete unnecessary comments
