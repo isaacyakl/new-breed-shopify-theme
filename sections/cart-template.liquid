@@ -78,6 +78,7 @@
             {% endfor %}
           </tbody>
         </table>
+        <div class="aiod-general-discount-topbar"></div>
         <div class="grid cart__row">
           {% if section.settings.cart_notes_enable %}
             <div class="grid__item medium-up--one-half">
@@ -99,7 +100,9 @@
                 </div>
               {%- endif -%}
 
-              <p class="h3 cart__subtotal" id="CartSubtotal">{{ cart.total_price | money }}</p>
+              <p class="h3 cart__subtotal" id="CartSubtotal">
+                <span class="csapps-cart-original-total">{{ cart.total_price | money }}</span>
+              </p>
             </div>
 
             {%- capture taxes_shipping_checkout -%}
