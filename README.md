@@ -9,6 +9,10 @@ Shopify Theme Kit References:
 
 ## Version
 
+### [2021-12-04] 2.5.0
+
+Add support for [All In One Automatic Discounts app](https://apps.shopify.com/all-in-one-automatic-discounts)
+
 ### [2021-09-10] 2.4.0
 
 Improve search section and add product missing info on search pages
