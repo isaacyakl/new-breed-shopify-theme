@@ -64,6 +64,7 @@ Revamp from old style.
 ## To-Do
 
 -  Add "Product Missing" section to bottom of collection pages
+-  Add MFG-SKU metafield to description on product pages
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
 -  Add default image in product thumbnail but not on product page if no images are uploaded
