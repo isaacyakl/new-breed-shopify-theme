@@ -97,7 +97,12 @@ Before making changes to the theme follow this procedure to avoid editing on the
 Whenever changes are being made follow this procedure.
 
 1. Start `theme watch` (or `npm run watch`).
-2. Preview the changes by running `theme open` (or `npm run preview`) or by finding the new theme in the Shopify backend and selecting "Preview" from its actions menu.
+2. Preview the changes by running `theme open` (or `npm run preview`) or by finding the new theme in the Shopify backend and selecting "Customize" on it.
+
+```
+NOTE: Some theme code changes made for 3rd party applications (from the Shopify store) will not be preview-able unless you view them by means of the "Customize" button/view.
+```
+
 3. Edit and commit changes as necessary.
 
 ## Publish Procedure
