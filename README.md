@@ -44,50 +44,22 @@ Correct when COVID delay and availability notices appear on product pages
 
 Add support for media including YouTube, 3d models, and videos
 
-### [2021-01-12] 2.1.1
-
-Fix used warranty notice and open social in new tab
-
-### [2020-12-30] 2.1.0
-
-Add breadcrumbs
-
-### [2020-12-09] 2.0.2
-
-Add various small improvements.
-
-### [2020-09-17] 2.0.1
-
-Update email notification styling and product availability info including gift card design.
-
-### [2020-08-27] 2.0.0
-
-Restart based on [Venture](https://themes.shopify.com/themes/venture/styles/snowboards) theme.
-
-### [2020-08-20] 1.1.1
-
-Cleanup old code.
-
-### [2019-11-18] 1.1.0
-
-Revamp from old style.
+[View older versions >>>](https://github.com/isaacyakl/new-breed-shopify-theme/tree/f9703c7e96eae4d2569990577ce968ceb0733d6a)
 
 ## To-Do
 
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
--  Procedurally generate collection images using most popular product and a serverless function
+-  Procedurally generate collection images using most popular product and a serverless function - https://www.youtube.com/watch?v=A0Ww-SU7K5E
 -  Automatically add brand/vendor name at the beginning of product title in SEO page title unless it is already part of the product name
--  Truncate long title text for featured product sections
+
 -  Discontinued products should only display in collections and featured sections if they are in stock
--  Remove discontinued label from product card
--  Discontinued products can still be purchased if they are in stock
+-  Discontinued products can still be purchased if they are in stock and the discontinued label should be hidden temporarily both on product cards and page
+-  Hide ability to write reviews on Discontinued products
+
 -  Expand search bar by default on desktop and make search bar more prominent
--  Add predictive search feature — https://shopify.dev/tutorials/add-predictive-search-to-your-shopify-theme
--  Do not display products tagged as "Discontinued" in collections
--  Hide ability to write reviews on Archived/Discontinued products
--  Hide Archived/Discontinued products from collection pages
 -  Update SKU when product options are changed
+-  Add predictive search feature — https://shopify.dev/tutorials/add-predictive-search-to-your-shopify-theme
 -  Improve link color contrast visibility
 
 ## New Version Procedure
