@@ -271,9 +271,7 @@
                 
         <hr>
 
-        <p class="product-single__sku">
-          <span class="disable-select">SKU: </span>{{ product.selected_or_first_available_variant.sku }}
-        </p>
+        {% include 'skus' %}
 
         {% if section.settings.social_sharing_products %}
           <hr>
