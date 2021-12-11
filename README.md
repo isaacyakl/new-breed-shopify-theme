@@ -9,6 +9,17 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2021-12-11] 2.5.1
+
+-  SEO optimizations (per MOZ SEO recommendations)
+   -  Meta tag truncations
+      -  Limit descriptions to 155 characters
+      -  Limit page titles to 60 characters
+   -  Remove automatic branding from page titles
+-  Add product not found snippet to collection pages
+-  Add manufacturer sku to product pages when available
+-  Improve product placeholder image feature for when a product image is not uploaded
+
 ### [2021-12-04] 2.5.0
 
 Add support for [All In One Automatic Discounts app](https://apps.shopify.com/all-in-one-automatic-discounts)
