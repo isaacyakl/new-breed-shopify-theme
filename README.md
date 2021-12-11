@@ -65,8 +65,7 @@ Revamp from old style.
 
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
--  Add default image in product thumbnail but not on product page if no images are uploaded
--  Add default placeholder images for collections and products https://www.shopify.com/partners/blog/placeholder-images
+-  Procedurally generate collection images using most popular product and a serverless function
 -  Automatically add brand/vendor name at the beginning of product title in SEO page title unless it is already part of the product name
 -  Truncate long title text for featured product sections
 -  Discontinued products should only display in collections and featured sections if they are in stock

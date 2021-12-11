@@ -9,14 +9,19 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <a href="{{ product.url | within: collection }}" class="product-card">
-  {% assign image = product.featured_image %}
+  {% if product.images.size == 0 %}
+    {% comment %} Make sure this "image not found" image is uploaded to the Shopify backend files library {% endcomment %}
+    {% assign image = images['newbreed-image-not-available.jpg'] %}
+  {% else %}
+    {% assign image = product.featured_image %}
+  {% endif %}
   <div class="product-card__image-container">
     <div class="product-card__image-wrapper">
       <noscript>
-        <img src="{{ product.featured_image.src | img_url: '480x480' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card__image">
+        <img src="{{ image.src | img_url: '480x480' }}" alt="{{ image.alt | escape }}" class="product-card__image">
       </noscript>
       <div class="product-card__image js {% if product.images.size > 1 %}hoverImageFeat{% endif %}" style="max-width: {% include 'image-width' with image: image, width: 235 %}px;" data-image-id="{{ image.id }}" data-image-with-placeholder-wrapper>
-        <div style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
+        <div style="padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
           {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
           <img class="lazyload"
             data-src="{{ img_url }}"
@@ -45,7 +50,7 @@
             </div>
             <div class="placeholder-background placeholder-background--animation" data-image-placeholder></div>
           </div>
-        {% endif %}
+      {% endif %}
     </div>
   </div>
   <div class="product-card__info">
