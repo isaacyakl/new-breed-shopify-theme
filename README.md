@@ -48,14 +48,20 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
+-  Fix page title and meta descriptions' truncations from cutting into HTML entity names (e.g. &ndash... in page title of https://newbreedpb.com/collections/face-eye-protection-and-accessories/airsoft?page=3). Perhaps HTML entities can be processed/rendered before truncation?
+-  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
+
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
--  Procedurally generate collection images using most popular product and a serverless function - https://www.youtube.com/watch?v=A0Ww-SU7K5E
+
+-  Procedurally generate collection images using most popular product and a serverless function - https://www.youtube.com/watch?v=A0Ww-SU7K5E, https://acloudguru.com/blog/engineering/serverless-image-optimization-and-delivery, https://serverless-stack.com/chapters/dynamically-generate-social-share-images-with-serverless.html
 -  Automatically add brand/vendor name at the beginning of product title in SEO page title unless it is already part of the product name
 
 -  Discontinued products should only display in collections and featured sections if they are in stock
 -  Discontinued products can still be purchased if they are in stock and the discontinued label should be hidden temporarily both on product cards and page
 -  Hide ability to write reviews on Discontinued products
+
+-  Improve rich snippets / product structured data - https://neilpatel.com/blog/ecommerce-rich-snippets/, https://developers.google.com/search/docs/advanced/structured-data/product
 
 -  Expand search bar by default on desktop and make search bar more prominent
 -  Update SKU when product options are changed
