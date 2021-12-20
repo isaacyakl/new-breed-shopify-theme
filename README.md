@@ -48,6 +48,8 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
+-  Reorder where AIOD wholesale offers etc appear on product pages. Place them beneath price before add to cart button
+
 -  Fix page title and meta descriptions' truncations from cutting into HTML entity names (e.g. &ndash... in page title of https://newbreedpb.com/collections/face-eye-protection-and-accessories/airsoft?page=3). Perhaps HTML entities can be processed/rendered before truncation?
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
