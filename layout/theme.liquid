@@ -11,8 +11,7 @@
 		{% endif %}
 
 		<link rel="canonical" href="{{ canonical_url }}" />
-		{% capture full_page_title %}{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ "general.meta.tags" | t: tags:meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ "general.meta.page" | t: page:current_page }}{% endif %}{% endcapture %}
-		<title>{{ full_page_title | truncate: 60 }}</title>
+		<title>{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ "general.meta.tags" | t: tags:meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ "general.meta.page" | t: page:current_page }}{% endif %}</title>
 
 		{% if page_description %}
 		<meta name="description" content="{{ page_description | escape | truncate: 155 }}" />
