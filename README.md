@@ -48,8 +48,6 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
--  Reorder where AIOD wholesale offers etc appear on product pages. Place them beneath price before add to cart button
-
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
 -  Add Back Order and Pre-Order Release date tag
