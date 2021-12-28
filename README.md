@@ -9,6 +9,12 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2021-12-28] 2.5.2
+
+-  Revert page title truncation because Shopify already limits to 70 characters
+-  Reorder All in One Discounts divs in product-template.liquid
+-  Perform housekeeping
+
 ### [2021-12-11] 2.5.1
 
 -  SEO optimizations (per MOZ SEO recommendations)
@@ -54,13 +60,10 @@ Add support for media including YouTube, 3d models, and videos
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
 
 -  Procedurally generate collection images using most popular product and a serverless function - https://www.youtube.com/watch?v=A0Ww-SU7K5E, https://acloudguru.com/blog/engineering/serverless-image-optimization-and-delivery, https://serverless-stack.com/chapters/dynamically-generate-social-share-images-with-serverless.html
--  Automatically add brand/vendor name at the beginning of product title in SEO page title unless it is already part of the product name
 
 -  Discontinued products should only display in collections and featured sections if they are in stock
 -  Discontinued products can still be purchased if they are in stock and the discontinued label should be hidden temporarily both on product cards and page
 -  Hide ability to write reviews on Discontinued products
-
--  Improve rich snippets / product structured data - https://neilpatel.com/blog/ecommerce-rich-snippets/, https://developers.google.com/search/docs/advanced/structured-data/product
 
 -  Expand search bar by default on desktop and make search bar more prominent
 -  Update SKU when product options are changed
