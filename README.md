@@ -54,6 +54,7 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
+-  Show price on product cards even if product is out of stock
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
 -  Add Back Order and Pre-Order Release date tag
