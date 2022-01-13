@@ -130,7 +130,7 @@
           <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
 
           {%- comment -%} Review Stars {%- endcomment -%}
-          {%- unless product.tags contains 'Pre-Owned' -%}
+          {%- unless product.tags contains 'Used' -%}
             <p class="prod-sale-point">
               <a href="#customer-reviews">
                 <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
@@ -292,7 +292,7 @@
         <hr id="customer-reviews">
 
         {%- comment -%} Reviews {%- endcomment -%}
-        {%- unless product.tags contains 'Pre-Owned' -%}
+        {%- unless product.tags contains 'Used' -%}
           <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
           {%- if product.tags contains 'Discontinued' -%}
             <style>

@@ -18,7 +18,7 @@
 
 {% comment %} Warranty {% endcomment %}
 {% comment %} Used Gear {% endcomment %}
-{%- if product.tags contains 'Pre-Owned' or product.tags contains 'Used' -%}
+{%- if product.tags contains 'Used' -%}
     {% comment %} Used Gun {% endcomment %}
     {%- if product.type == 'Gun' -%}
         <p class="prod-sale-point">
