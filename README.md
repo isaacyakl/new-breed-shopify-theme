@@ -54,7 +54,6 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
--  Show price on product cards even if product is out of stock
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
 -  Add Back Order and Pre-Order Release date tag
@@ -64,7 +63,7 @@ Add support for media including YouTube, 3d models, and videos
 
 -  Discontinued products should only display in collections and featured sections if they are in stock
 -  Discontinued products can still be purchased if they are in stock and the discontinued label should be hidden temporarily both on product cards and page
--  Hide ability to write reviews on Discontinued products
+-  Discontinued products should be found in search results
 
 -  Expand search bar by default on desktop and make search bar more prominent
 -  Update SKU when product options are changed

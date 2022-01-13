@@ -294,6 +294,13 @@
         {%- comment -%} Reviews {%- endcomment -%}
         {%- unless product.tags contains 'Pre-Owned' -%}
           <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+          {%- if product.tags contains 'Discontinued' -%}
+            <style>
+              .spr-summary-actions {
+                display: none;
+              }
+            </style>
+          {%- endif -%}
         {%- endunless -%}
         
       </div>
