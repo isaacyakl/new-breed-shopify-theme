@@ -65,7 +65,6 @@ Add support for media including YouTube, 3d models, and videos
 -  Discontinued products can still be purchased if they are in stock and the discontinued label should be hidden temporarily both on product cards and page
 -  Discontinued products should be found in search results
 
--  Expand search bar by default on desktop and make search bar more prominent
 -  Update SKU when product options are changed
 -  Add predictive search feature — https://shopify.dev/tutorials/add-predictive-search-to-your-shopify-theme
 -  Improve link color contrast visibility

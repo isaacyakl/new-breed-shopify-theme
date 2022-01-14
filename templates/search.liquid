@@ -8,19 +8,6 @@
         <p class="section-header__subtext">{{ 'general.search.results_count_html' | t: count: search.results_count, terms: search.terms }}</p>
       {% endif %}
     </div>
-    <div class="grid__item medium-up--one-third section-header__item">
-      <form action="{{ routes.search_url }}" method="get" class="input-group" role="search">
-        {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
-        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="input-group__field input--content-color">
-
-        <div class="input-group__btn">
-          <button type="submit" class="btn btn--narrow">
-            {% include 'icon-arrow-right' %}
-            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
-          </button>
-        </div>
-      </form>
-    </div>
   </header>
 
   {% if search.performed %}

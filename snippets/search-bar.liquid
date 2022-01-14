@@ -1,0 +1,19 @@
+<div class="page-width">
+    <div class="section-block section-block__header search-bar">
+      <div class="grid">
+        <div class="grid__item">
+          <form action="{{ routes.search_url }}" method="get" class="grid grid--half-gutters" role="search">
+            <div class="grid__item medium-up--five-sixths">
+              <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="input--full"  autocomplete="off" autofocus>
+            </div>
+            <div class="grid__item medium-up--one-sixth">
+              <button type="submit" class="btn btn--narrow btn--full search-btn">
+                {% include 'icon-search' %}
+                <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
