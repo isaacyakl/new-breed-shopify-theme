@@ -9,6 +9,12 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-01-18] 2.6.0
+
+-  Add page-width search bar to theme template (all pages)
+-  Hide ability to write new reviews when product is discontinued
+-  Add robots.txt.liquid and hide review thank you page
+
 ### [2021-12-28] 2.5.2
 
 -  Revert page title truncation because Shopify already limits to 70 characters
@@ -89,7 +95,7 @@ Whenever changes are being made follow this procedure.
 2. Preview the changes by running `theme open` (or `npm run preview`) or by finding the new theme in the Shopify backend and selecting "Customize" on it.
 
 ```
-NOTE: Some theme code changes made for 3rd party applications (from the Shopify store) will not be preview-able unless you view them by means of the "Customize" button/view.
+NOTE: Some theme code changes made for 3rd party Shopify applications (e.g. variant code swatches, up sells) may not be preview-able unless you view the theme via the "Customize" button/view.
 ```
 
 3. Edit and commit changes as necessary.
