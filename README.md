@@ -60,6 +60,7 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
+-  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
 -  Add Back Order and Pre-Order Release date tag
