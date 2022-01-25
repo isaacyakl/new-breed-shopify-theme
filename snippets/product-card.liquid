@@ -60,8 +60,6 @@
 
     <div class="product-card__name">{{ product.title }}</div>
 
-    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-
     {% if product.available %}
       <div class="product-card__price">
         {% if product.compare_at_price > product.price %}
