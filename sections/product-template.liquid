@@ -129,6 +129,13 @@
 
           <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
 
+          {%- comment -%} Review Badge / Stars {%- endcomment -%}
+          {%- unless product.tags contains 'Used' -%}
+            {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+          {%- endunless -%}
+          
+          <hr>
+                    
           <ul class="product-single__meta-list list--no-bullets list--inline{% if shop.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
             <li id="ProductSaleTag-{{ section.id }}" class="{% unless product.compare_at_price > product.price %}hide{% endunless %}">
               <div class="product-tag">
@@ -280,7 +287,11 @@
           {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
         {% endif %}
 
-        <hr id="customer-reviews">
+        {%- comment -%} Reviews {%- endcomment -%}
+        {%- unless product.tags contains 'Used' -%}
+          <hr id="customer-reviews">
+          {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+        {%- endunless -%}
 
       </div>
     </div>

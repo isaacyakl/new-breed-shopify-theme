@@ -60,6 +60,11 @@
 
     <div class="product-card__name">{{ product.title }}</div>
 
+    {%- comment -%} Review Badge / Stars {%- endcomment -%}
+    {%- unless product.tags contains 'Used' -%}
+      {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+    {%- endunless -%}
+
     {% if product.available %}
       <div class="product-card__price">
         {% if product.compare_at_price > product.price %}
