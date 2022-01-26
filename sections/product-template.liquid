@@ -207,8 +207,6 @@
 
         </div>
         
-        <hr>
-        
         {%- unless product.tags contains 'Archive' or product.tags contains 'Archived' or product.tags contains 'Discontinued' -%}
 
           {% capture "form_class" %}product-form{% if section.settings.enable_payment_button %} product-form--payment-button{% endif %}{%- endcapture %}
