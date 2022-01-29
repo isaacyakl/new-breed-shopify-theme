@@ -9,6 +9,11 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-01-28] 2.7.0
+
+-  Change review system to Judge.me reviews (review stars now only show if there are reviews)
+-  Improve horizontal ruler placement for sales points
+
 ### [2022-01-18] 2.6.0
 
 -  Add page-width search bar to theme template (all pages)
