@@ -65,6 +65,8 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
+-  Make sure MFG-SKU metafield is showing up in microdata for SEO
+-  Update SKU when product options are changed
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
@@ -77,7 +79,6 @@ Add support for media including YouTube, 3d models, and videos
 -  Discontinued products can still be purchased if they are in stock and the discontinued label should be hidden temporarily both on product cards and page
 -  Discontinued products should be found in search results
 
--  Update SKU when product options are changed
 -  Add predictive search feature — https://shopify.dev/tutorials/add-predictive-search-to-your-shopify-theme
 -  Improve link color contrast visibility
 
