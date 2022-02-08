@@ -22,12 +22,20 @@
 {%- endif -%}
 
 {% comment %} Warranty {% endcomment %}
+{% assign product_tags = product.tags | downcase %}
+{%- if product_tags contains 'no warranty' -%}
+    <p class="prod-sale-point">
+        <a href="/pages/warranty">
+            🧾 Warranty <em>NOT</em> included
+        </a>
+    </p>
+    {% assign num_sale_points = num_sale_points | plus: 1 %}
 {% comment %} Used Gear {% endcomment %}
-{%- if product.tags contains 'Used' -%}
+{%- elsif product_tags contains 'used' -%}
     {% comment %} Used Gun {% endcomment %}
     {%- if product.type == 'Gun' -%}
         <p class="prod-sale-point">
-            <a href="/pages/warranty#usedmarkerwarranty">
+            <a href="/pages/warranty#usedgunwarranty">
                 🧾 Free 30-day warranty included
             </a>
         </p>
@@ -38,16 +46,16 @@
     {% comment %} New Gun {% endcomment %}
     {%- if product.type == 'Gun' -%}
     <p class="prod-sale-point">
-        <a href="/pages/warranty#newmarkerwarranty">
-            🧾 Manufacturer warranty included
+        <a href="/pages/warranty#newgunwarranty">
+            🧾 Warranty <em>may</em> be included (contact manufacturer)
         </a>
     </p>
     {% assign num_sale_points = num_sale_points | plus: 1 %}
     {%- else -%}
         {%- if product.selected_or_first_available_variant.price >= 4500 -%}
             <p class="prod-sale-point">
-                <a href="/pages/warranty#manufacturerwarranty">
-                    🧾 Manufacturer warranty included
+                <a href="/pages/warranty">
+                    🧾 Warranty <em>may</em> be included (contact manufacturer)
                 </a>
             </p>
             {% assign num_sale_points = num_sale_points | plus: 1 %}
