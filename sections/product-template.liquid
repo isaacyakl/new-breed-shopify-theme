@@ -1,3 +1,4 @@
+{% assign product_tags = product.tags | downcase %}
 <div class="page-width" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" data-ajax="{{ section.settings.enable_ajax }}" data-stock="{{ section.settings.stock_enable }}">
   {% assign product_image_size = '480x480' %}
 
@@ -130,7 +131,7 @@
           <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
 
           {%- comment -%} Review Badge / Stars {%- endcomment -%}
-          {%- unless product.tags contains 'Used' -%}
+          {%- unless product_tags contains 'used' -%}
             {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
           {%- endunless -%}
           
@@ -187,7 +188,7 @@
           
           {% include 'product-availability' %}
 
-          {%- unless product.tags contains 'Archive' or product.tags contains 'Archived' or product.tags contains 'Discontinued' -%}
+          {%- unless product_tags contains 'archive' or product_tags contains 'archived' or product_tags contains 'discontinued' -%}
             {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
               <div class="product-single__policies rte">
                 {%- if shop.taxes_included -%}
@@ -207,7 +208,7 @@
 
         </div>
         
-        {%- unless product.tags contains 'Archive' or product.tags contains 'Archived' or product.tags contains 'Discontinued' -%}
+        {%- unless product_tags contains 'archive' or product_tags contains 'archived' or product_tags contains 'discontinued' -%}
 
           {% capture "form_class" %}product-form{% if section.settings.enable_payment_button %} product-form--payment-button{% endif %}{%- endcapture %}
 
@@ -286,7 +287,7 @@
         {% endif %}
 
         {%- comment -%} Reviews {%- endcomment -%}
-        {%- unless product.tags contains 'Used' -%}
+        {%- unless product_tags contains 'used' -%}
           <hr id="customer-reviews">
           {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
         {%- endunless -%}

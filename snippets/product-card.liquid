@@ -6,6 +6,7 @@
   it is from search results.
 {% endcomment %}
 
+{% assign product_tags = product.tags | downcase %}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <a href="{{ product.url | within: collection }}" class="product-card">
@@ -61,7 +62,7 @@
     <div class="product-card__name">{{ product.title }}</div>
 
     {%- comment -%} Review Badge / Stars {%- endcomment -%}
-    {%- unless product.tags contains 'Used' -%}
+    {%- unless product_tags contains 'used' -%}
       {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
     {%- endunless -%}
 
@@ -102,7 +103,7 @@
         {%- endunless -%}
       </div>
     {% else %}
-        {%- if product.tags contains 'Archive' or product.tags contains 'Archived' or product.tags contains 'Discontinued' -%}
+        {%- if product_tags contains 'archive' or product_tags contains 'archived' or product_tags contains 'discontinued' -%}
           <div class="product-card__availability-archived">
             Discontinued
           </div>

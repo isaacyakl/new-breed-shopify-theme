@@ -1,3 +1,5 @@
+{% assign product_tags = product.tags | downcase %}
+
 {% comment %} Track the number of sale points added {% endcomment %}
 {% assign num_sale_points = 0%}
 
@@ -22,7 +24,6 @@
 {%- endif -%}
 
 {% comment %} Warranty {% endcomment %}
-{% assign product_tags = product.tags | downcase %}
 {%- if product_tags contains 'no warranty' -%}
     <p class="prod-sale-point">
         <a href="/pages/warranty">
