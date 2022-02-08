@@ -9,6 +9,12 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-02-07] 2.7.1
+
+-  Improve warranty notice verbiage
+-  Add support for "no warranty" tag
+-  Improve tag detection using downcase filter
+
 ### [2022-01-28] 2.7.0
 
 -  Change review system to Judge.me reviews (review stars now only show if there are reviews)
