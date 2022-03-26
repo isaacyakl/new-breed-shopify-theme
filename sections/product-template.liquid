@@ -290,6 +290,21 @@
         {%- unless product_tags contains 'used' -%}
           <hr id="customer-reviews">
           {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+          {%- if product_tags contains 'discontinued' -%}
+            {% if product.metafields.reviews.rating_count > 0 -%}
+              <style>
+                .jdgm-widget-actions-wrapper {
+                  display: none;
+                }
+              </style>
+            {%- else -%}
+              <style>
+                #judgeme_product_reviews {
+                  display: none;
+                }
+              </style>
+            {%- endif -%}
+          {%- endif -%}
         {%- endunless -%}
 
       </div>
