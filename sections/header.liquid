@@ -123,12 +123,11 @@
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "{{ shop.name }}",
-            {% if section.settings.logo != blank %}
-            "logo": "{{ section.settings.logo | img_url: image_size }}",
-            {% endif %}
+            "logo": "https://cdn.shopify.com/s/files/1/1446/2796/files/new-new-breed-logo-lime.png?v=1614334812",
             "url": "{{ shop.secure_url }}",
             "description": "{{ shop.description }}",
             "telephone": "{{ shop.phone }}",
+            "email" : "{{ shop.email }}",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "{{ shop.address.street }}",
@@ -137,9 +136,7 @@
               "postalCode": "{{ shop.address.zip }}",
               "addressCountry": "{{ shop.address.country }}"
             },
-            {% if section.settings.logo != blank %}
-              "image": "{{ section.settings.logo | img_url: image_size }}",
-            {% endif %}
+            "image": "https://cdn.shopify.com/s/files/1/1446/2796/files/new-new-breed-logo-lime.png?v=1614334812",
             "sameAs": [
             {% if settings.social_facebook_link != blank %}
               "{{ settings.social_facebook_link | escape }}",
