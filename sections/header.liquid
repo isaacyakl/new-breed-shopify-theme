@@ -165,7 +165,7 @@
           "url": "{{ shop.secure_url }}",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "{{ routes.search_url }}?q={search_term_string}",
+            "target": "{{ shop.secure_url }}{{ routes.search_url }}?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         }
