@@ -96,21 +96,20 @@
       </div>
       <div class="grid__item small--one-half medium-up--two-thirds small--text-center">
         {% if request.page_type == 'index' %}
-          <h1 class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
+          <h1 class="site-header__logo">
         {% else %}
-          <div class="site-header__logo h1" itemscope itemtype="http://schema.org/Organization">
+          <div class="site-header__logo h1">
         {% endif %}
           {% if section.settings.logo != blank %}
             {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-            <a href="{{ routes.root_url }}" itemprop="url" class="site-header__logo-link">
+            <a href="{{ routes.root_url }}" class="site-header__logo-link">
               <img src="{{ section.settings.logo | img_url: image_size }}"
                    srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                   alt="{{ section.settings.logo.alt | default: shop.name }}"
-                   itemprop="logo">
+                   alt="{{ section.settings.logo.alt | default: shop.name }}">
             </a>
           {% else %}
             {% assign shop_name_length = shop.name.size %}
-            <a href="{{ routes.root_url }}" itemprop="url" {% if shop_name_length > 10 %} class="site-header__shop-name--small"{% endif %}>{{ shop.name }}</a>
+            <a href="{{ routes.root_url }}" {% if shop_name_length > 10 %} class="site-header__shop-name--small"{% endif %}>{{ shop.name }}</a>
           {% endif %}
         {% if request.page_type == 'index' %}
           </h1>
@@ -118,6 +117,59 @@
           </div>
         {% endif %}
       </div>
+
+      <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "{{ shop.name }}",
+            {% if section.settings.logo != blank %}
+            "logo": "{{ section.settings.logo | img_url: image_size }}",
+            {% endif %}
+            "url": "{{ shop.secure_url }}",
+            "description": "{{ shop.description }}",
+            "telephone": "{{ shop.phone }}",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "{{ shop.address.street }}",
+              "addressLocality": "{{ shop.address.city }}",
+              "addressRegion": "{{ shop.address.province }}",
+              "postalCode": "{{ shop.address.zip }}",
+              "addressCountry": "{{ shop.address.country }}"
+            },
+            {% if section.settings.logo != blank %}
+              "image": "{{ section.settings.logo | img_url: image_size }}",
+            {% endif %}
+            "sameAs": [
+            {% if settings.social_facebook_link != blank %}
+              "{{ settings.social_facebook_link | escape }}",
+            {% endif %}
+            {% if settings.social_instagram_link != blank %}
+              "{{ settings.social_instagram_link | escape }}",
+            {% endif %}
+            {% if settings.social_youtube_link != blank %}
+              "{{ settings.social_youtube_link | escape }}",
+            {% endif %}
+              "{{ shop.secure_url }}",
+            {% if settings.social_twitter_link != blank %}
+              "{{ settings.social_twitter_link | escape }}"
+            {% endif %}
+            ]
+          }
+        </script>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "WebSite",
+          "name": "{{ shop.name }}",
+          "url": "{{ shop.secure_url }}",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ routes.search_url }}?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      </script>
 
       <div class="grid__item small--one-quarter medium-up--one-third text-right">
         <div id="SiteNavSearchCart" class="site-header__search-cart-wrapper">
