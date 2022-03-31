@@ -120,49 +120,49 @@
 
       <script type="application/ld+json">
         {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "{{ shop.name }}",
-            "logo": "https://cdn.shopify.com/s/files/1/1446/2796/files/new-new-breed-logo-lime.png?v=1614334812",
-            "url": "{{ shop.secure_url }}",
-            "description": "{{ shop.description }}",
-            "telephone": "{{ shop.phone }}",
-            "email" : "{{ shop.email }}",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "{{ shop.address.street }}",
-              "addressLocality": "{{ shop.address.city }}",
-              "addressRegion": "{{ shop.address.province }}",
-              "postalCode": "{{ shop.address.zip }}",
-              "addressCountry": "{{ shop.address.country }}"
-            },
-            "image": "https://cdn.shopify.com/s/files/1/1446/2796/files/new-new-breed-logo-lime.png?v=1614334812",
-            "sameAs": [
+          "@context": "https://schema.org",{% capture shopLogoURL %}https://cdn.shopify.com/s/files/1/1446/2796/files/new-new-breed-logo-lime.png?v=1614334812{% endcapture %}
+          "@type": "Organization",
+          "name": {{ shop.name | json }},
+          "logo": {{ shopLogoURL | json }},
+          "url": {{ shop.secure_url | json }},
+          "description": {{ shop.description | json }},
+          "telephone": {{ shop.phone | json }},
+          "email" : {{ shop.email | json }},
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": {{ shop.address.street | json }},
+            "addressLocality": {{ shop.address.city | json }},
+            "addressRegion": {{ shop.address.province | json }},
+            "postalCode": {{ shop.address.zip | json }},
+            "addressCountry": {{ shop.address.country | json }}
+          },
+          "image": {{ shopLogoURL | json }},
+          "sameAs": [
             {% if settings.social_facebook_link != blank %}
-              "{{ settings.social_facebook_link | escape }}",
+              {{ settings.social_facebook_link | json }},
             {% endif %}
             {% if settings.social_instagram_link != blank %}
-              "{{ settings.social_instagram_link | escape }}",
+              {{ settings.social_instagram_link | json }},
             {% endif %}
             {% if settings.social_youtube_link != blank %}
-              "{{ settings.social_youtube_link | escape }}",
+              {{ settings.social_youtube_link | json }},
             {% endif %}
-              "{{ shop.secure_url }}",
+              {{ shop.secure_url | json }},
             {% if settings.social_twitter_link != blank %}
-              "{{ settings.social_twitter_link | escape }}"
+              {{ settings.social_twitter_link | json }}
             {% endif %}
-            ]
-          }
-        </script>
+          ]
+        }
+      </script>
       <script type="application/ld+json">
         {
           "@context": "https://schema.org/",
           "@type": "WebSite",
-          "name": "{{ shop.name }}",
-          "url": "{{ shop.secure_url }}",
+          "name": {{ shop.name | json }},
+          "url": {{ shop.secure_url | json }},
           "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ shop.secure_url }}{{ routes.search_url }}?q={search_term_string}",
+            "@type": "SearchAction",{% capture searchURL %}{{shop.secure_url}}{{routes.search_url}}?q={search_term_string}{% endcapture %}
+            "target": {{ searchURL | json }},
             "query-input": "required name=search_term_string"
           }
         }

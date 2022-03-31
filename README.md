@@ -71,6 +71,8 @@ Add support for media including YouTube, 3d models, and videos
 
 ## To-Do
 
+-  Add Breadcrumb json-ld
+-  Merge separate product and review json-ld
 -  Make sure MFG-SKU metafield is showing up in microdata for SEO
 -  Update SKU when product options are changed
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
