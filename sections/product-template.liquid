@@ -19,12 +19,19 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="description" content={{ product.description | strip_html | strip | json | replace: '\n', ' ' | replace: '\r', ' ' | split: ' ' | join: ' ' }}>
   <meta itemprop="sku" content="{{ current_variant.sku }}" />
-  {% unless product.metafields.newbreed.mfg-sku.value == '' %}
+  {% capture mfg-sku-val %}{{ product.metafields.newbreed.mfg-sku.value }}{% endcapture %}
+  {% unless mfg-sku-val == '' %}
     <meta itemprop="mpn" content="{{ product.metafields.newbreed.mfg-sku.value }}">
   {% endunless %}
   <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
     <meta itemprop="name" content="{{ product.vendor }}"/>
   </div>
+  {% if product.metafields.reviews.rating_count > 0 -%}
+    <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+      <meta itemprop="reviewCount" content="{{ product.metafields.reviews.rating_count }}" />
+      <meta itemprop="ratingValue" content="{{ product.metafields.reviews.rating.value }}" />
+    </div>
+  {% endif %}
 
   <div class="grid product-single">
     <div class="grid__item {% if product.media.size > 1 %}medium-up--three-fifths{% else %}medium-up--one-half{% endif %}">
@@ -315,13 +322,6 @@
 
       </div>
     </div>
-    {% comment %}Review structured data{% endcomment %}
-    {% if product.metafields.reviews.rating_count > 0 -%}
-      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
-        <meta itemprop="reviewCount" content="{{ product.metafields.reviews.rating_count }}" />
-        <meta itemprop="ratingValue" content="{{ product.metafields.reviews.rating.value }}" />
-      </div>
-    {% endif %}
   </div>
 </div>
 
