@@ -1,5 +1,5 @@
 <p class="product-single__sku">
-    <span class="disable-select">SKU: </span>{{ product.selected_or_first_available_variant.sku }}
+    <span class="disable-select">SKU: </span>{{ current_variant.sku }}
 </p>
 
 {% capture mfg-sku-val %}{{ product.metafields.newbreed.mfg-sku.value }}{% endcapture %}

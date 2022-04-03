@@ -9,18 +9,19 @@
     {% assign feat-image = product.featured_image %}
   {% endif %}
 
-  <meta itemprop="name" content="{{ product.title }}">
-  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
-  <meta itemprop="image" content="{{ feat-image.src | img_url: '600x600' }}">
-  {%- if settings.product_vendor_enable -%}
-    <meta itemprop="brand" content="{{ product.vendor }}">
-  {%- endif -%}
-
   {% comment %}
     Get first variant, or deep linked one
   {% endcomment %}
   {% assign current_variant = product.selected_or_first_available_variant %}
   {% assign variants_with_unit_price = product.variants | where: "unit_price_measurement" %}
+
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="description" content={{ product.description | strip_html | strip | json | replace: '\n', ' ' | replace: '\r', ' ' | split: ' ' | join: ' ' }}>
+  <meta itemprop="sku" content="{{ current_variant.sku }}" />
+  <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+    <meta itemprop="name" content="{{ product.vendor }}"/>
+  </div>
 
   <div class="grid product-single">
     <div class="grid__item {% if product.media.size > 1 %}medium-up--three-fifths{% else %}medium-up--one-half{% endif %}">
@@ -50,6 +51,7 @@
                           alt="{{ media.alt | escape }}">
                       </a>
                     </div>
+                    <meta itemprop="image" content="{{ media | img_url: '1024x1024' }}">
                   {% when 'external_video' %}
                     <div class="product-single__photo product__photo-container product__photo-container-{{ section.id }} js{% unless media == featured_image %} hide{% endunless %}"
                     id="ProductPhoto"
@@ -122,6 +124,7 @@
       <div class="product-single__info-wrapper">
         <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
 
         <div class="product-single__meta small--text-center">
           {% if settings.product_vendor_enable %}
@@ -134,9 +137,9 @@
           {%- unless product_tags contains 'used' -%}
             {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
           {%- endunless -%}
-          
+
           <hr>
-                    
+
           <ul class="product-single__meta-list list--no-bullets list--inline{% if shop.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
             <li id="ProductSaleTag-{{ section.id }}" class="{% unless product.compare_at_price > product.price %}hide{% endunless %}">
               <div class="product-tag">
@@ -309,6 +312,13 @@
 
       </div>
     </div>
+    {% comment %}Review structured data{% endcomment %}
+    {% if product.metafields.reviews.rating_count > 0 -%}
+      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="{{ product.metafields.reviews.rating_count }}" />
+        <meta itemprop="ratingValue" content="{{ product.metafields.reviews.rating.value }}" />
+      </div>
+    {% endif %}
   </div>
 </div>
 
