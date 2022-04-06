@@ -7,9 +7,10 @@
 {%- else -%}
     {%- assign prod = product -%}
 {%- endif -%}
+{% assign prod_tags = prod.tags | downcase %}
 
 {%- comment -%} Archived/Discontinued {%- endcomment -%}
-{%- if prod.tags contains 'Archive' or prod.tags contains 'Archived' or prod.tags contains 'Discontinued' -%}
+{%- if prod_tags contains 'archive' or prod_tags contains 'archived' or prod_tags contains 'discontinued' -%}
     <p class="product-single__discontinued prod-status">
         Discontinued
     </p>
@@ -24,16 +25,16 @@
 {%- comment -%} Out of Stock but still Available {%- endcomment -%}
 {%- elsif prod.selected_or_first_available_variant.inventory_policy == 'continue' -%}
     {%- comment -%} Pre-Order {%- endcomment -%}
-    {%- if prod.tags contains 'Pre-Order' -%}
+    {%- if prod_tags contains 'pre-order' -%}
         <p class="product-single__order prod-status">
             Pre-Order
         </p>
         {%- comment -%} Search for release tag {%- endcomment -%}
         {%- assign found = false -%}
-        {%- for tag in prod.tags -%}
-            {%- if tag contains 'Releases ' -%}
+        {%- for tag in prod_tags -%}
+            {%- if tag contains 'releases ' -%}
                 <p class="product-single__handling">
-                    <strong>Releases:</strong> <u>{{ tag | remove_first: "Releases " }}</u>
+                    <strong>Releases:</strong> <u>{{ tag | remove_first: "releases " }}</u>
                 </p>
                 {%- assign found = true -%}
                 {%- break -%}
@@ -49,16 +50,16 @@
             By ordering you agree to the <a href="/pages/custom-pre-orders-terms" title="Pre-Order Terms">terms</a>.
         </p>
     {%- comment -%} Back Order {%- endcomment -%}
-    {%- elsif prod.tags contains 'Back Order' -%}
+    {%- elsif prod_tags contains 'back order' -%}
         <p class="product-single__back-order prod-status">
             Back Order
         </p>
         {%- comment -%} Search for release tag {%- endcomment -%}
         {%- assign found = false -%}
-        {%- for tag in prod.tags -%}
-            {%- if tag contains 'In Stock ' -%}
+        {%- for tag in prod_tags -%}
+            {%- if tag contains 'in stock ' -%}
                 <p class="product-single__handling">
-                    <strong>In Stock:</strong> <u>{{ tag | remove_first: "In Stock " }}</u>
+                    <strong>In Stock:</strong> <u>{{ tag | remove_first: "in stock " }}</u>
                 </p>
                 {%- assign found = true -%}
                 {%- break -%}
@@ -71,7 +72,7 @@
         </p>
         {%- endif -%}
     {%- comment -%} Custom Order {%- endcomment -%}
-    {%- elsif prod.tags contains 'Custom Order' -%}
+    {%- elsif prod_tags contains 'custom order' -%}
         <p class="product-single__order prod-status">
             Custom Order
         </p>
@@ -95,11 +96,11 @@
         {%- else -%}
             {%- comment -%} Search for handling time tag {%- endcomment -%}
             {%- assign found = false -%}
-            {%- for tag in prod.tags -%}
-                {%- if tag contains 'HT ' -%}
-                    {%- if tag contains 'Minutes' or tag contains 'Hours' or tag contains 'Days' or tag contains 'Weeks' or tag contains 'Months' -%}
+            {%- for tag in prod_tags -%}
+                {%- if tag contains 'ht ' -%}
+                    {%- if tag contains 'minutes' or tag contains 'hours' or tag contains 'days' or tag contains 'weeks' or tag contains 'months' -%}
                         <p class="product-single__handling">
-                            Handling time: {{ tag | remove_first: "HT " | downcase }}.
+                            Handling time: {{ tag | remove_first: "ht " }}.
                         </p>
                         {%- assign found = true -%}
                         {%- break -%}
