@@ -9,6 +9,16 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-04-06] 2.8.0
+
+-  Hide reviews if product is discontinued and has no reviews
+-  Add structured data
+   -  WebSite
+   -  Organization
+-  Add microdata
+   -  MPN
+   -  AggregateRating
+
 ### [2022-02-07] 2.7.1
 
 -  Improve warranty notice verbiage
@@ -75,7 +85,6 @@ Add support for media including YouTube, 3d models, and videos
 -  Add product/variant info structured data to product pages
 -  Verify Availability structured data includes all statuses on product pages
 -  Add Shipping details structured data to product pages
--  Make sure MFG-SKU metafield is showing up in microdata for SEO
 -  Update visible SKU when product options are changed
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
