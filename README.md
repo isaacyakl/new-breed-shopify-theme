@@ -9,6 +9,15 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-04-07] 2.8.1
+
+-  Improve microdata
+   -  Product Availability
+   -  Only show org and sitelinks searchbox on index/homepage
+-  Add microdata
+   -  Product Condition
+   -  If a product is eligible for free shipping
+
 ### [2022-04-06] 2.8.0
 
 -  Hide reviews if product is discontinued and has no reviews
