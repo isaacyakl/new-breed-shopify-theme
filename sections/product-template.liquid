@@ -131,9 +131,20 @@
     </div>
 
     <div class="grid__item {% if product.media.size > 1 %}medium-up--two-fifths{% else %}medium-up--one-half{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      {% if product.selected_or_first_available_variant.price >= 15000 %}
+        <div itemprop="shippingDetails" itemtype="https://schema.org/OfferShippingDetails" itemscope>
+          <div itemprop="shippingRate" itemtype="https://schema.org/MonetaryAmount" itemscope>
+            <meta itemprop="value" content="0" />
+            <meta itemprop="currency" content="USD" />
+          </div>
+          <div itemprop="shippingDestination" itemtype="https://schema.org/DefinedRegion" itemscope>
+            <meta itemprop="addressCountry" content="UM" />
+          </div>
+        </div>
+      {% endif %}
       <div class="product-single__info-wrapper">
         <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
-        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}{% if product_tags contains 'pre-order' %}PreOrder{% else %}InStock{% endif %}{% else %}{% if product_tags contains 'back order' %}BackOrder{% elsif product_tags contains 'discontinued' %}Discontinued{% else %}OutOfStock{% endif %}{% endif %}">
         <meta itemprop="itemCondition" content="https://schema.org/{% if product_tags contains 'used' %}UsedCondition{% else %}NewCondition{% endif %}" />
         <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
 
