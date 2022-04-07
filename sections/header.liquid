@@ -118,6 +118,7 @@
         {% endif %}
       </div>
 
+      {% if request.page_type == 'index' %}
       <script type="application/ld+json">
         {
           "@context": "https://schema.org",{% capture shopLogoURL %}https://cdn.shopify.com/s/files/1/1446/2796/files/new-new-breed-logo-lime.png?v=1614334812{% endcapture %}
@@ -154,6 +155,7 @@
           ]
         }
       </script>
+      {% endif %}
       <script type="application/ld+json">
         {
           "@context": "https://schema.org/",

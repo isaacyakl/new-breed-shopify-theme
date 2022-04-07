@@ -74,6 +74,7 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 ## To-Do
 
 -  Add Breadcrumb and FAQ structured data to non-product pages
+-  Add article and product reviews to blog templates
 -  Update visible SKU when product options are changed
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
