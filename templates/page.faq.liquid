@@ -1,0 +1,46 @@
+<div class="page-width">
+  <h1 class="small--text-center">{{ page.title }}</h1>
+  <div class="content-block">
+    <div class="rte rte--indented-images">
+      {{ page.content }}
+    </div>
+  </div>
+  <script type="text/javascript">
+    'use strict';
+
+    var questionsNodes = document.querySelectorAll('h3:not([class]');
+    var questions = [];
+    Array.prototype.forEach.call(questionsNodes, function (q) {
+      questions.push(q.innerText);
+    });
+
+    var answersNodes = document.querySelectorAll('h3 + p:not([class]');
+    var answers = [];
+    Array.prototype.forEach.call(answersNodes, function (a) {
+      answers.push(a.innerText);
+    });
+
+    var structuredFAQData = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": []
+    };
+    questions.forEach(function (q, i) {
+      structuredFAQData["mainEntity"].push({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": answers[i]
+        }
+      });
+    });
+
+    var script = document.createElement('script');
+    script.setAttribute('type', 'application/ld+json');
+    script.textContent = JSON.stringify(structuredFAQData);
+    document.head.appendChild(script);
+  </script>
+
+  {% section 'featured-products-subsection' %}
+</div>
