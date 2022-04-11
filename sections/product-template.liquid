@@ -144,7 +144,7 @@
       {% endif %}
       <div class="product-single__info-wrapper">
         <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
-        <link itemprop="availability" href="http://schema.org/{% if product.available %}{% if product_tags contains 'pre-order' %}PreOrder{% else %}InStock{% endif %}{% else %}{% if product_tags contains 'back order' %}BackOrder{% elsif product_tags contains 'discontinued' %}Discontinued{% else %}OutOfStock{% endif %}{% endif %}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}{% if product_tags contains 'pre-order' and product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity == 0 %}PreOrder{% else %}InStock{% endif %}{% else %}{% if product_tags contains 'back order' %}BackOrder{% elsif product_tags contains 'discontinued' %}Discontinued{% else %}OutOfStock{% endif %}{% endif %}">
         <meta itemprop="itemCondition" content="https://schema.org/{% if product_tags contains 'used' %}UsedCondition{% else %}NewCondition{% endif %}" />
         <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
 
