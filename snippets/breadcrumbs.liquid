@@ -1,4 +1,105 @@
 {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+<script type="text/javascript">
+	'use strict';
+
+	var structuredBreadData = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": []
+	};
+
+	structuredBreadData["itemListElement"].push({
+		"@type": "ListItem",
+		"position": structuredBreadData["itemListElement"].length+1,
+		"name": "Home",
+		"item": {{ shop.secure_url | json }}
+	});
+
+	{% if template contains 'page' %}
+		structuredBreadData["itemListElement"].push({
+			"@type": "ListItem",
+			"position": structuredBreadData["itemListElement"].length+1,
+			"name": {{ page.title | json }}
+		});
+	{% elsif template contains 'product' %}
+		{% if collection.url %}
+			structuredBreadData["itemListElement"].push({
+				"@type": "ListItem",
+				"position": structuredBreadData["itemListElement"].length+1,
+				"name": {{ collection.title | json }},
+				"item": {{ collection.url | json }}
+			});
+		{% endif %}
+		structuredBreadData["itemListElement"].push({
+			"@type": "ListItem",
+			"position": structuredBreadData["itemListElement"].length+1,
+			"name": {{ product.title | json }}
+		});
+	{% elsif template contains 'collection' and collection.handle %}
+		{% if current_tags %}
+			{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+			structuredBreadData["itemListElement"].push({
+				"@type": "ListItem",
+				"position": structuredBreadData["itemListElement"].length+1,
+				"name": {{ collection.title | json }},
+				"item": {{ url | json }}
+			});
+			structuredBreadData["itemListElement"].push({
+				"@type": "ListItem",
+				"position": structuredBreadData["itemListElement"].length+1,
+				"name": {{ current_tags | join: " + " | json }}
+			});
+		{% else %}
+		structuredBreadData["itemListElement"].push({
+			"@type": "ListItem",
+			"position": structuredBreadData["itemListElement"].length+1,
+			"name": {{ collection.title | json }}
+		});
+		{% endif %}
+	{% elsif template == 'blog' %}
+		{% if current_tags %}
+			structuredBreadData["itemListElement"].push({
+				"@type": "ListItem",
+				"position": structuredBreadData["itemListElement"].length+1,
+				"name": {{ blog.title | json }},
+				"item": {{ blog.url | json }}
+			});
+			structuredBreadData["itemListElement"].push({
+				"@type": "ListItem",
+				"position": structuredBreadData["itemListElement"].length+1,
+				"name": {{ current_tags | join: " + " | json }}
+			});
+		{% else %}
+			structuredBreadData["itemListElement"].push({
+				"@type": "ListItem",
+				"position": structuredBreadData["itemListElement"].length+1,
+				"name": {{ blog.title | json }}
+			});
+		{% endif %}
+	{% elsif template == 'article' %}
+		structuredBreadData["itemListElement"].push({
+			"@type": "ListItem",
+			"position": structuredBreadData["itemListElement"].length+1,
+			"name": {{ blog.title | json }},
+			"item": {{ blog.url | json }}
+		});
+		structuredBreadData["itemListElement"].push({
+			"@type": "ListItem",
+			"position": structuredBreadData["itemListElement"].length+1,
+			"name": {{ article.title | json }}
+		});
+	{% else %}
+		structuredBreadData["itemListElement"].push({
+			"@type": "ListItem",
+			"position": structuredBreadData["itemListElement"].length+1,
+			"name": {{ page_title | json }}
+		});
+	{% endif %}
+		var script = document.createElement('script');
+		script.setAttribute('type', 'application/ld+json');
+		script.textContent = JSON.stringify(structuredBreadData);
+		document.head.appendChild(script);
+	</script>
 <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
 	<a href="/" title="Home">Home</a>
 	{% if template contains 'page' %}
