@@ -15,7 +15,7 @@
   {% assign current_variant = product.selected_or_first_available_variant %}
   {% assign variants_with_unit_price = product.variants | where: "unit_price_measurement" %}
 
-  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="name" content="{{ product.title | replace: '"', "'" }}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="description" content={{ product.description | strip_html | strip | json | replace: '\n', ' ' | replace: '\r', ' ' | split: ' ' | join: ' ' }}>
   <meta itemprop="sku" content="{{ current_variant.sku }}" />
