@@ -9,6 +9,20 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-04-12] 2.8.2
+
+-  Add FAQs auto formatting
+   -  Add styling
+   -  Make collapsible sections/answers
+   -  Add id attribute based on questions
+   -  Add question (anchor) links
+-  Improve microdata
+   -  Add support for product titles with double quotes
+   -  Add more conditions for product pre-order availability
+-  Add structured data
+   -  FAQ
+   -  Breadcrumb
+
 ### [2022-04-07] 2.8.1
 
 -  Improve microdata
