@@ -5,19 +5,118 @@
       {{ page.content }}
     </div>
   </div>
+  <style>
+    .faq-q {
+      background-color: #c4cdd5;
+      padding: 10px;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+    .faq-q:hover {
+      background-color: #95a7b7;
+    }
+    .faq-q-closed::after, .faq-q-closed:after {
+      content: '+';
+      float: right;
+    }
+    .faq-q-open::after, .faq-q-open:after {
+      content: '-';
+      float: right;
+    }
+    .faq-a {
+    }
+    .faq-a-closed {
+      overflow: hidden;
+      display: none;
+    }
+    .faq-a-open {
+      display: inherit;
+    }
+    .faq-anchor-link {
+      display: inline-block;
+      font-size: small;
+      padding-right: 10px;
+      vertical-align: middle;
+      height: 16pt;
+      transition: all 1s ease-in-out;
+    }
+  </style>
   <script type="text/javascript">
     'use strict';
+
+    var winLoc = window.location;
+    var qHash = winLoc.hash.substring(1);
 
     var questionsNodes = document.querySelectorAll('h3:not([class]');
     var questions = [];
     Array.prototype.forEach.call(questionsNodes, function (q) {
       questions.push(q.innerText);
     });
+    Array.prototype.forEach.call(questionsNodes, function (q){
+      var qId = q.innerText.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+      .map(x => x.toLowerCase())
+      .join('-');
+      q.id = qId;
+      var qLoc = `${winLoc.protocol}//${winLoc.hostname}${winLoc.pathname}#${qId}`;
+      var anchorLink = document.createElement('a');
+      anchorLink.addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(qLoc);
+        anchorLink.textContent = "📋";
+        var revertAnchorLink = ()=>{
+          anchorLink.textContent = "🔗";
+        }
+        setTimeout(()=> {revertAnchorLink()},1000);
+      });
+      anchorLink.setAttribute('href',qLoc);
+      anchorLink.setAttribute('title',"Copy question link");
+      anchorLink.classList.add('faq-anchor-link')
+      anchorLink.textContent = "🔗";
+      q.prepend(anchorLink);
+
+      q.classList.add("faq-q");
+      if(qId === qHash) {
+        q.classList.add("faq-q-open");
+        q.nextElementSibling.classList.add("faq-a-open");
+      }
+      else {
+        q.classList.add("faq-q-closed");
+      }
+
+      q.addEventListener("click", function(e) {
+        if(q.nextElementSibling.classList.contains('faq-a-closed')) {
+          if(history.pushState) {
+            history.pushState(null, null, `#${qId}`);
+          }
+          else {
+              location.hash = `#${qId}`;
+          }
+
+          q.nextElementSibling.classList.remove('faq-a-closed');
+          q.classList.remove('faq-q-closed');
+          q.nextElementSibling.classList.add('faq-a-open');
+          q.classList.add('faq-q-open');
+        }
+        else {
+          q.nextElementSibling.classList.remove('faq-a-open');
+          q.classList.remove('faq-q-open');
+          q.nextElementSibling.classList.add('faq-a-closed');
+          q.classList.add('faq-q-closed');
+        }
+      });
+    });
 
     var answersNodes = document.querySelectorAll('h3 + p:not([class]');
     var answers = [];
     Array.prototype.forEach.call(answersNodes, function (a) {
       answers.push(a.innerText);
+    });
+    Array.prototype.forEach.call(answersNodes, function (a) {
+      a.classList.add("faq-a");
+      if(!a.classList.contains("faq-a-open")) {
+        a.classList.add("faq-a-closed");
+      }
     });
 
     var structuredFAQData = {
