@@ -19,8 +19,7 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="description" content={{ product.description | strip_html | strip | json | replace: '\n', ' ' | replace: '\r', ' ' | split: ' ' | join: ' ' }}>
   <meta itemprop="sku" content="{{ current_variant.sku }}" />
-  {% capture mfg-sku-val %}{{ product.metafields.newbreed.mfg-sku.value }}{% endcapture %}
-  {% unless mfg-sku-val == '' %}
+  {% unless product.metafields.newbreed.mfg-sku.value == '' %}
     <meta itemprop="mpn" content="{{ product.metafields.newbreed.mfg-sku.value }}">
   {% endunless %}
   <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
