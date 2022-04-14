@@ -92,12 +92,13 @@ Remove COVID-19 warnings (product pages and email notices) and delete unnecessar
 
 Add second-image peek feature and support for pre-order release and back-in-stock dates
 
-[View older versions >>>](https://github.com/isaacyakl/new-breed-shopify-theme/tree/f9703c7e96eae4d2569990577ce968ceb0733d6a)
-
 ## To-Do
 
 -  Improve article microdata
--  Add product reviews structured data to article templates
+   -  News blogs use [Article](https://developers.google.com/search/docs/advanced/structured-data/article) -> [schema.org/NewsArticle](https://schema.org/NewsArticle)
+   -  Review blogs use [ReviewSnippet](https://developers.google.com/search/docs/advanced/structured-data/review-snippet)
+   -  How-to blogs user [How-to](https://developers.google.com/search/docs/advanced/structured-data/how-to)
+   -  Add general article structured data to blog pages
 -  Update visible SKU when product options are changed
 -  Add FAQs searchbox
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
@@ -122,9 +123,9 @@ Before making changes to the theme follow this procedure to avoid editing on the
 1. Login to the Shopify backend.
 2. Navigate to Online Store > Themes.
 3. Duplicate the current theme.
-4. Publish the duplicated theme with "Copy of" in the name (e.g. "Copy of New Breed 2.2.2").
-5. Rename the old, unpublished theme to the newer version number you will be working on (e.g. "New Breed 2.3.0").
-6. Rename the duplicated, published theme so that it does not have "Copy of" in it but still represents the older theme version number (e.g. "New Breed 2.2.2").
+4. Publish the duplicated theme with "Copy of" in the name (e.g. "Copy of New Breed 2.3.0").
+5. Rename the old, unpublished theme to the newer version number you will be working on (e.g. "New Breed 2.3.1").
+6. Rename the duplicated, published theme so that it does not have "Copy of" in it but still represents the older theme version number (e.g. "New Breed 2.3.0").
 7. Update the version number in `package.json` to reflect the version in development.
 
 ## Edit Procedure
@@ -147,6 +148,6 @@ Once a new version is ready to go live refer to this procedure.
 1. Add the release date, new version number, and description to the `README.md` versions section.
 2. Commit with the message formatted: `Publish v<version#>`.
 3. Go to the Shopify backend and navigate to Online Store > Themes.
-4. Find the theme with the new version that you have been editing (e.g. "New Breed 2.3.0").
+4. Find the theme with the new version that you have been editing (e.g. "New Breed 2.3.1").
 5. Publish the new theme version.
 6. Verify that it has successfully published to the live site and is now the current theme.

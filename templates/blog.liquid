@@ -1,11 +1,10 @@
 {% paginate blog.articles by 5 %}
 
 <div class="page-width">
-
   <h1>
     {% if current_tags %}
       {{ current_tags.first }}
-    {% else %}
+      {% else %}
       {{ blog.title }}
     {% endif %}
     <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog__rss-link link-accent-color">
@@ -13,30 +12,36 @@
       <span class="icon__fallback-text">RSS</span>
     </a>
   </h1>
-
+  <p>
+    {{ page_description }}
+  </p>
+  <style>
+    .content-block {
+      transition: all 0.5s ease-in-out;
+      box-shadow: none;
+    }
+    .content-block:hover {
+      box-shadow: 3px 3px 5px rgba(0,0,0,0.25);
+    }
+    .article__photo-wrapper {
+      transition: all 0.5s ease-in-out;
+      transform: scale(1);
+    }
+    .content-block:hover .article__photo-wrapper {
+      transform: scale(1.05);
+    }
+  </style>
   <div class="grid">
-    <div class="grid__item{% if blog.all_tags.size > 0 %} medium-up--three-quarters large-up--four-fifths{% endif %}">
+    <div class="grid__item">
       {% for article in blog.articles %}
         <div class="content-block">
-
-          <p class="blog__meta">
-            {% if article.tags.size > 0 %}
-              {% for tag in article.tags %}
-                <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="link-body-color"><strong>{{ tag }}</strong></a>{% if forloop.last %} - {% else %}, {% endif %}
-              {% endfor %}
-            {% endif %}
-            {{ article.published_at | time_tag: format: 'date' }}
-          </p>
-
-          <h2 class="blog__title-link"><a href="{{ article.url }}">{{ article.title }}</a></h2>
-
           {% if article.image %}
             <div class="content-block__full-image content-block__full-image--large">
               <a href="{{ article.url }}">
                 <noscript>
                   {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
                 </noscript>
-                <div class="article__photo-container">
+                <div class="article__photo-container" style="max-height: 250px; overflow: hidden;">
                   <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
                   {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
                     <img class="lazyload"
@@ -51,6 +56,13 @@
               </a>
             </div>
           {% endif %}
+          
+          <h2 class="blog__title-link"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+          <p class="blog__meta">
+            {{ article.published_at | time_tag: format: 'date' }} by {{ article.author }}
+          </p>
+          
+          <hr>
 
           <div class="rte rte--indented-images">
             {% if article.excerpt.size > 0 %}
@@ -65,35 +77,17 @@
         </div>
       {% endfor %}
     </div>
-    {% if blog.all_tags.size > 0 %}
-      <div class="grid__item medium-up--one-quarter large-up--one-fifth small--hide">
-        <div class="content-block content-block--small">
-          <h6 class="content-block__title">{{ 'blogs.article.tags' | t }}</h6>
-          <ul class="list--no-bullets list--bold">
-            <li>
-              <a href="{{ blog.url }}">{{ 'blogs.article.all_tags' | t }}</a>
-            </li>
-            {% for tag in blog.all_tags %}
-              {% if current_tags contains tag %}
-              <li>{{ tag }}</li>
-              {% else %}
-              <li>{{ tag | link_to_tag: tag }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
+    <div class="grid__item">
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
         </div>
-      </div>
-    {% endif %}
-  </div>
-
-  {% section 'featured-products-subsection' %}
-
-  {% if paginate.pages > 1 %}
-    <div class="pagination">
-      {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+      {% endif %}
     </div>
-  {% endif %}
-
+    <div class="grid__item">
+      {% section 'featured-products-subsection' %}
+    </div>
+  </div>
 </div>
 
 {% endpaginate %}

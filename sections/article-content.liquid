@@ -23,13 +23,12 @@
 {% endif %}
 
 <div class="content-block">
-
   {% if article.image %}
     <div class="content-block__full-image content-block__full-image--large">
       <noscript>
         {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
       </noscript>
-      <div class="article__photo-container">
+      <div class="article__photo-container" style="max-height: 250px; overflow: hidden;">
         <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
         {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
           <img class="lazyload"
@@ -44,20 +43,26 @@
     </div>
   {% endif %}
 
+  <h1>{{ article.title }}</h1>
   <p class="blog__meta">
-    {% if article.tags.size > 0 %}
-      {% for tag in article.tags %}
-        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="link-body-color"><strong>{{ tag }}</strong></a>{% if forloop.last %} - {% else %}, {% endif %}
-      {% endfor %}
-    {% endif %}
-    {{ article.published_at | time_tag: format: 'date' }}
+    {{ article.published_at | time_tag: format: 'date' }} by {{ article.author }}
   </p>
+  
+  <hr>
 
-  <h1 class="h2">{{ article.title }}</h1>
-
-  <div class="rte rte--indented-images" itemprop="articleBody">
+  <div class="rte rte--indented-images">
     {{ article.content }}
   </div>
+
+  <p class="blog__meta">
+    {% if article.tags.size > 0 %}
+      <hr>
+      Tags: 
+      {% for tag in article.tags %}
+        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="link-body-color"><strong>{{ tag }}</strong></a>{% if forloop.last %}{% else %}, {% endif %}
+      {% endfor %}
+    {% endif %}
+  </p>
 
   {% if section.settings.social_sharing_blog %}
     <hr>
