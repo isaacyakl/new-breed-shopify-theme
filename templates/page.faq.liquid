@@ -71,7 +71,7 @@
       q.addEventListener("click", function (e) {
         if (q.nextElementSibling.classList.contains('faq-a-closed')) {
           if (history.pushState) {
-            history.pushState(null, null, '#' + qId);
+            history.pushState(null, '', '#' + qId);
           } else {
             location.hash = '#' + qId;
           }
