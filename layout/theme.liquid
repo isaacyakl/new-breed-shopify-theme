@@ -60,6 +60,108 @@
 		</script>
 		{% endif %}
 
+		{% if request.page_type == 'article' %}
+			{% if article.url contains 'news' %}
+				<script type="application/ld+json">
+					{
+						"@context": "https://schema.org",
+						"@type": "NewsArticle",
+						"headline": {{ article.title | json }},
+						"image": [
+							{{ article.image | img_url: '300x300' | json }}
+						],
+						"datePublished": {{ article.published_at | date: "%Y-%m-%dT%H:%M:%S.%L%z" | json }},
+						"dateModified": {{ article.updated_at | date: "%Y-%m-%dT%H:%M:%S.%L%z" | json }},
+						"author": [
+							{
+								"@type": "Person",
+								"name": {{ article.author | json }}
+							}
+						]
+					}
+				</script>
+			{% elsif article.url contains 'reviews' %}
+				{% assign articleBody = article.content | split: '===review===' %}
+				{% if articleBody.size == 2 %}
+					{% assign reviewedData =  articleBody[1] | replace: '<', '===nbpa===<' | replace: '>', '>===nbpa===' | strip_html | replace: '===nbpa===', ' ' | strip | split: ' ' | sort %}
+					{% assign reviewedProd = all_products[reviewedData[1]] %}
+					{%- if reviewedProd.title != "" -%}
+						<script type="application/ld+json">
+							{
+								"@context": "https://schema.org/",
+								"@type": "Product",
+								"name": {{ reviewedProd.title | json }},
+								"image": [
+									{%- for image in reviewedProd.images -%}
+										{{ image | image_url: width: 1024 | json }}{%- unless forloop.last -%},{%- endunless -%}
+									{%- endfor -%}
+								],
+								"description": {{ reviewedProd.description | json }},
+								"sku": {{ reviewedProd.selected_or_first_available_variant.sku | json }},
+								{%- unless reviewedProd.metafields.newbreed.mfg-sku.value == '' -%}
+									"mpn": {{- reviewedProd.metafields.newbreed.mfg-sku.value | json -}},
+								{%- endunless -%}
+								"brand": {
+									"@type": "Brand",
+									"name": {{ reviewedProd.vendor | json }}
+								},
+								"review": {
+									"@type": "Review",
+									"reviewRating": {
+									"@type": "Rating",
+									"datePublished": {{ article.published_at | date: "%Y-%m-%dT%H:%M:%S.%L%z" | json }},
+									"dateModified": {{ article.updated_at | date: "%Y-%m-%dT%H:%M:%S.%L%z" | json }},
+									"ratingValue": {{- reviewedData[0] | json -}},
+									"bestRating": "5"
+									},
+									"author": {
+									"@type": "Person",
+									"name": {{ article.author | json }}
+									}
+								},
+								
+								{%- capture reviewedProdURL -%}{{ shop.url }}{{ reviewedProd.selected_or_first_available_variant.url }}{%- endcapture -%}
+
+								{% assign reviewedProdTags = reviewedProd.tags | downcase %}
+								{%- capture reviewedProdCondition -%}https://schema.org/{% if reviewedProdTags contains 'used' %}UsedCondition{% else %}NewCondition{% endif %}{%- endcapture -%}
+
+								{%- capture reviewedProdAvail -%}http://schema.org/{% if reviewedProd.available %}{% if reviewedProdTags contains 'pre-order' and reviewedProd.selected_or_first_available_variant.inventory_policy == 'continue' and reviewedProd.selected_or_first_available_variant.inventory_quantity == 0 %}PreOrder{% else %}InStock{% endif %}{% else %}{% if reviewedProdTags contains 'back order' %}BackOrder{% elsif reviewedProdTags contains 'discontinued' %}Discontinued{% else %}OutOfStock{% endif %}{% endif %}{%- endcapture -%}
+
+								"offers": {
+									"@type": "Offer",
+									"url": {{ reviewedProdURL | json}},
+									"priceCurrency": {{ cart.currency.iso_code | json }},
+									"price": "{{ reviewedProd.selected_or_first_available_variant.price | divided_by: 100.00 }}",
+									"itemCondition": {{ reviewedProdCondition | json }},
+									"availability": {{ reviewedProdAvail | json }}
+								}
+							}
+						</script>
+					{%- endif -%}
+				{% endif %}
+			{% elsif article.url contains 'how-to' %}
+			{% else %}
+				<script type="application/ld+json">
+					{
+						"@context": "https://schema.org",
+						"@type": "BlogPosting",
+						"headline": {{ article.title | json }},
+						"image": [
+							{{ article.image | img_url: '300x300' | json }}
+						],
+						"datePublished": {{ article.published_at | date: "%Y-%m-%dT%H:%M:%S.%L%z" | json }},
+						"dateModified": {{ article.updated_at | date: "%Y-%m-%dT%H:%M:%S.%L%z" | json }},
+						"author": [
+							{
+								"@type": "Person",
+								"name": {{ article.author | json }}
+							}
+						]
+					}
+				</script>
+			{% endif %}
+		{% endif %}
+
 		<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
 		{{
