@@ -96,9 +96,9 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 
 -  Improve article microdata
    -  News blogs use [Article](https://developers.google.com/search/docs/advanced/structured-data/article) -> [schema.org/NewsArticle](https://schema.org/NewsArticle)
-   -  Review blogs use [ReviewSnippet](https://developers.google.com/search/docs/advanced/structured-data/review-snippet)
-   -  How-to blogs user [How-to](https://developers.google.com/search/docs/advanced/structured-data/how-to)
    -  Add general article structured data to blog pages
+   -  Review blogs use [Product w/ Review Snippet](https://developers.google.com/search/docs/advanced/structured-data/product#single-product-page)
+   -  How-to blogs user [How-to](https://developers.google.com/search/docs/advanced/structured-data/how-to)
 -  Update visible SKU when product options are changed
 -  Add FAQs searchbox
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
@@ -107,6 +107,7 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 -  Add Back Order and Pre-Order Release date tag
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
 
+-  Add newbreed-image-not-available.jpg to collections and other items that generate a featured image (e.g. product image in product-template.liquid)
 -  Procedurally generate collection images using most popular product and a serverless function - https://www.youtube.com/watch?v=A0Ww-SU7K5E, https://acloudguru.com/blog/engineering/serverless-image-optimization-and-delivery, https://serverless-stack.com/chapters/dynamically-generate-social-share-images-with-serverless.html
 
 -  Discontinued products should only display in collections and featured sections if they are in stock

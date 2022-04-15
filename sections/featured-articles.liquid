@@ -41,7 +41,7 @@
                 {% endif %}
                 <div class="article-block__info">
                   <span class="article-block__date">
-                    {{ article.published_at | time_tag: format: 'date' }}
+                    {{ article.published_at | date: format: 'date' }}
                   </span>
                   <h6 class="article-block__title">{{ article.title }}</h6>
                   <p>{{ 'blogs.article.read_more' | t }}</p>

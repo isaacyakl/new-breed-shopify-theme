@@ -31,7 +31,7 @@
       <div class="article__photo-container" style="max-height: 250px; overflow: hidden;">
         <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
         {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-          <img class="lazyload"
+          <img class="lazyload" style="top: -40%;"
             src="{{ article.image | img_url: '300x300' }}"
             data-src="{{ img_url }}"
             data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
@@ -45,14 +45,49 @@
 
   <h1>{{ article.title }}</h1>
   <p class="blog__meta">
-    {{ article.published_at | time_tag: format: 'date' }} by {{ article.author }}
+    {%- assign artPubDate = article.published_at | date: format: 'date' | date: '%s' -%}
+    {%- assign artUpDate = article.updated_at | date: format: 'date' | date: '%s' -%}
+    by {{ article.author }} on {{ article.published_at | date: format: 'date' }}{% if artUpDate > artPubDate %} &mdash; Updated: {{ article.updated_at | date: format: 'date' }}{% endif %}
   </p>
   
   <hr>
 
-  <div class="rte rte--indented-images">
-    {{ article.content }}
-  </div>
+  {% if article.url contains 'reviews' %}
+    <div class="rte rte--indented-images">
+      {% assign articleBody = article.content | split: '===review===' %}
+      {%- if articleBody.size == 2 -%}
+        {%- assign reviewedData =  articleBody[1] | replace: '<', '===nbpa===<' | replace: '>', '>===nbpa===' | strip_html | replace: '===nbpa===', ' ' | strip | split: ' ' | sort -%}
+        {%- assign reviewedProdRating = reviewedData[0] -%}
+        {%- assign reviewedProd = all_products[reviewedData[1]] -%}
+        {%- if reviewedProd.title != "" -%}
+          {%- assign parsedArticleBody = articleBody[0] | replace: '<', '===nbpa===<' | replace: '>', '>===nbpa===' | replace: '===nbpa======nbpa===', '===nbpa===' | split: '===nbpa===' | reverse -%}
+          {%- assign removalString = "" -%}
+          {%- for e in parsedArticleBody -%}
+            {%- if e contains '</' and e contains '>' -%}
+              {%- break -%}
+            {%- else -%}
+              {%- capture removalString -%}{{- removalString -}}{{- e -}}{%- endcapture -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign parsedArticleBody = parsedArticleBody | reverse | join: '' -%}
+          {%- assign parsedArticleBodySize = parsedArticleBody.size | minus: removalString.size -%}
+          {{ parsedArticleBody | slice: 0, parsedArticleBodySize }}
+          <!-- ===review=== data parsed and removed -->
+        {%- else -%}
+          {{- articleBody[0] -}}
+          <!-- ===review=== ERROR parsing and removed -->
+        {%- endif -%}
+      {%- else -%}
+        <div class="rte rte--indented-images">
+          {{ article.content }}
+        </div>
+      {%- endif -%}
+    </div>  
+  {% else %}
+    <div class="rte rte--indented-images">
+      {{ article.content }}
+    </div>
+  {% endif %}
 
   {% if article.tags.size > 0 %}
     <hr>

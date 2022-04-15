@@ -44,7 +44,7 @@
                 <div class="article__photo-container" style="max-height: 250px; overflow: hidden;">
                   <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
                   {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                    <img class="lazyload"
+                    <img class="lazyload" style="top: -40%;"
                       src="{{ article.image | img_url: '300x300' }}"
                       data-src="{{ img_url }}"
                       data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
@@ -59,7 +59,9 @@
           
           <h2 class="blog__title-link"><a href="{{ article.url }}">{{ article.title }}</a></h2>
           <p class="blog__meta">
-            {{ article.published_at | time_tag: format: 'date' }} by {{ article.author }}
+            {%- assign artPubDate = article.published_at | date: format: 'date' | date: '%s' -%}
+            {%- assign artUpDate = article.updated_at | date: format: 'date' | date: '%s' -%}
+            {{ article.published_at | date: format: 'date' }} by {{ article.author }}{% if artUpDate > artPubDate %} &mdash; Updated: {{ article.updated_at | date: format: 'date' }}{% endif %}
           </p>
           
           <hr>
