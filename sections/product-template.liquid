@@ -17,7 +17,7 @@
 
   <meta itemprop="name" content="{{ product.title | replace: '"', "'" }}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
-  <meta itemprop="description" content={{ product.description | strip_html | strip | json | replace: '\n', ' ' | replace: '\r', ' ' | split: ' ' | join: ' ' }}>
+  <meta itemprop="description" content="{{ product.description | newline_to_br | replace: "<br>", " " | replace: "<br />", " " | strip_html | strip | strip_newlines | escape | split: ' ' | join: ' ' }}">
   <meta itemprop="sku" content="{{ current_variant.sku }}" />
   {% unless product.metafields.newbreed.mfg-sku.value == '' %}
     <meta itemprop="mpn" content="{{ product.metafields.newbreed.mfg-sku.value }}">
@@ -315,7 +315,7 @@
           <hr id="customer-reviews">
           {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
           {%- if product_tags contains 'discontinued' -%}
-            {% if product.metafields.reviews.rating_count > 0 -%}
+            {%- if product.metafields.reviews.rating_count > 0 -%}
               <style>
                 .jdgm-widget-actions-wrapper {
                   display: none;
