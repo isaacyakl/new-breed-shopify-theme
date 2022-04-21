@@ -51,9 +51,10 @@
   </p>
   
   <hr>
+  
 
   {% if article.url contains 'reviews' %}
-    <div class="rte rte--indented-images" id="reviewArticle">
+    <div class="rte rte--indented-images" id="articleBody">
       {% assign articleBody = article.content | split: '===review===' %}
       {%- if articleBody.size == 2 -%}
         {%- assign reviewedData =  articleBody[1] | replace: '<', '===nbpa===<' | replace: '>', '>===nbpa===' | strip_html | replace: '===nbpa===', ' ' | strip | split: ' ' | sort -%}
@@ -90,7 +91,7 @@
               "editor_rating" : {{- reviewedProdRating -}},
               "owner_reviews" : {{- reviewedProd.metafields.reviews.rating_count | default: 0 -}}
             };
-            var reviewArticleElement = document.querySelector("#reviewArticle");
+            var reviewArticleElement = document.querySelector("#articleBody");
             var parser = new DOMParser();
             var articleDOM = parser.parseFromString("{{- parsedArticleBody | slice: 0, parsedArticleBodySize | replace: "`", "&#96;" | replace: '"', '\"' | strip_newlines -}}", "text/html");
             var reviewH1 = document.querySelector("h1");
@@ -162,7 +163,7 @@
             ratingSectionCTAWrapper.appendChild(ratingSectionCTAPrice);
             var ratingSectionCTABtn = document.createElement("a");
             ratingSectionCTABtn.classList.add("btn");
-            ratingSectionCTABtn.setAttribute("href", "" + reviewedProd.absolute_url);
+            ratingSectionCTABtn.setAttribute("href", reviewedProd.absolute_url);
             ratingSectionCTABtn.innerText = "Buy now";
             ratingSectionCTAWrapper.appendChild(ratingSectionCTABtn);
 
@@ -292,12 +293,38 @@
           {{ article.content }}
         </div>
       {%- endif -%}
-    </div>  
+    </div>
   {% else %}
-    <div class="rte rte--indented-images">
+    <div class="rte rte--indented-images" id="articleBody">
       {{ article.content }}
     </div>
   {% endif %}
+  {%- comment -%}
+    Automatically add campaign URL queries
+  {%- endcomment -%}
+  <script type="text/javascript">
+    'use strict';
+
+    function addURLQueries(utmCampaignType) {
+      var articleLinks = document.querySelectorAll("#articleBody a");
+      articleLinks.forEach(function (a) {
+        var href = new URL(a.href);
+        if (window.location.hostname === href.hostname) {
+          href.search += "?utm_source=newbreed&utm_medium=referral&utm_campaign=" + utmCampaignType;
+          a.href = href.href;
+        }
+      });
+    };
+    {%- if article.url contains 'news' -%}
+    addURLQueries("news");
+    {%- elsif article.url contains 'review' -%}
+    addURLQueries("review");
+    {%- elsif article.url contains 'how-to' -%}
+    addURLQueries("how-to");
+    {%- else -%}
+    addURLQueries("blog");
+    {%- endif -%}
+  </script>
 
   {% if article.tags.size > 0 %}
     <hr>
