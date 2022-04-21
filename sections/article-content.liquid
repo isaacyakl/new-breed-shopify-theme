@@ -76,9 +76,10 @@
           </noscript>
           <!-- ===review=== data parsed and removed -->
 
-          {%- comment -%}Javascript review formatting https://www.figma.com/file/wm3nqfsJDOY5pzLOVE0R78/NBPA-Product-Review-Articles-Mockup?node-id=0%3A1{%- endcomment -%}
           <script type="text/javascript">
-            let reviewedProd = {
+            'use strict';
+
+            var reviewedProd = {
               "available" : {{- reviewedProd.available }},
               "handle": {{- reviewedProd.handle | json -}},
               "title": {{- reviewedProd.title | json -}},
@@ -89,14 +90,14 @@
               "editor_rating" : {{- reviewedProdRating -}},
               "owner_reviews" : {{- reviewedProd.metafields.reviews.rating_count | default: 0 -}}
             };
-            let reviewArticleElement = document.querySelector("#reviewArticle");
-            const parser = new DOMParser();
-            let articleDOM = parser.parseFromString(`{{- parsedArticleBody | slice: 0, parsedArticleBodySize | replace: "`", "&#96;" -}}`, "text/html");
-            let reviewH1 = document.querySelector("h1");
-            if(!reviewH1.innerText.toLowerCase().includes("review")) {
-              reviewH1.innerText = `${reviewedProd.title} Review`;
+            var reviewArticleElement = document.querySelector("#reviewArticle");
+            var parser = new DOMParser();
+            var articleDOM = parser.parseFromString("{{- parsedArticleBody | slice: 0, parsedArticleBodySize | replace: "`", "&#96;" | replace: '"', '\"' | strip_newlines -}}", "text/html");
+            var reviewH1 = document.querySelector("h1");
+            if (!reviewH1.innerText.toLowerCase().includes("review")) {
+              reviewH1.innerText = reviewedProd.title + " Review";
             }
-            let ratingWrapper = document.createElement("div");
+            var ratingWrapper = document.createElement("div");
             ratingWrapper.style.width = "100%";
             ratingWrapper.style.padding = "1rem 0rem";
             ratingWrapper.style.display = "flex";
@@ -104,52 +105,51 @@
             ratingWrapper.style.justifyContent = "center";
             ratingWrapper.style.alignItems = "center";
 
-            let ratingImage = document.createElement("img");
+            var ratingImage = document.createElement("img");
             ratingImage.setAttribute("src", reviewedProd.featured_image);
-            ratingImage.setAttribute("alt", `${reviewedProd.title} image`);
+            ratingImage.setAttribute("alt", reviewedProd.title + " image");
             ratingImage.style.width = "100%";
             ratingImage.style.maxWidth = "350px";
 
-            let ratingSection = document.createElement("div");
+            var ratingSection = document.createElement("div");
             ratingSection.style.maxWidth = "550px";
             ratingSection.style.width = "100%";
             ratingSection.style.padding = "1rem";
 
-            let ratingSectionHeading = document.createElement("h2");
+            var ratingSectionHeading = document.createElement("h2");
             ratingSectionHeading.innerText = reviewedProd.title;
             ratingSection.appendChild(ratingSectionHeading);
-            
-            let ratingSectionRating = document.createElement("p");
-            let ratingSectionEditorHeading = document.createElement("h3");
+
+            var ratingSectionRating = document.createElement("p");
+            var ratingSectionEditorHeading = document.createElement("h3");
             ratingSectionEditorHeading.innerText = "Editor Rating: ";
             ratingSectionRating.appendChild(ratingSectionEditorHeading);
 
             //https://icons8.com/icon/8uAtuJQJ4jhd/star-filled
-            const ratingStarWidth = 22;
-            for(let i = reviewedProd.editor_rating ; i > 0 ; i--){
-              if(i < 1) {
-                ratingSectionRating.innerHTML += `<div style="display: inline-block; overflow: hidden; width: ${ratingStarWidth*i}px; height: ${ratingStarWidth}px; vertical-align: text-bottom; margin-right: 1em;"><img style="max-width: none; width: ${ratingStarWidth}px;" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAElUlEQVRoge2ZbYhUZRTHf+fO6houRFjpqosvIaFmGTs7IxKBYO+UXxJ8wU3EoAjRpQ9hnwoq/BTZFwkqLIIgiaAEK4LGzQhdQXPd1lJYS83tRdK03Z3Zuc+/D+u6M7Mzd+aO99qH9sAwnDvPc87//5z/c57nMjBhEzZhsZm6NyXVvSEZZw6LK7B626fh7DQIPObawvcvxJHHiyMoALJnQU1ITeT9Z+JKE0sFdHJLI9lLfaBmEKDfmDpprs3bPRR1rngqkPtrXQF4kKZzObcmjlTxEBBbwXEV/Mi3ueel6CseOQF1r38QdE8R+JHPXRxfuzLqfNFXwOhA48CP+Mp3RJ8uQlPP2sU46wbZCHBKiCDMLbUlHx+LKme0FXDWMQa+bBUMpy1RpoysAvp+w+14+Z9BU8bAQzEZAGVpSMy1xXv6o8gbXQUS+edAUyrqf8xvJDcc2cEWSQXUt3EKVwZPI6YXA4fyvvuDgcY5tnzP4PXmrouAetunkcs2Y7QAM/C4H6eNV3+lsoQKnkm7MXXirJ+EO8PQ5POW/iT0fWkcAZ3YMA/fZmHebJyawbWAZoBmg81EbtY1nUNpl6kEtnhMia8xfwg4B/pVjrOY3+/hncH88zg7i++ds/SXfRUJqGfjq6AXy65goCQq+dVjqFqMEsJCOxLJzPZRzA3Fy6/jmHykROCKBneZKlUYG6M6YnjSmULI4yXU074K3IdIN5WyL+tfn2TCxPDNtMWS+3cFEgDQD+uX4bQXMe3GS6ZsnqzJtVuq86NSrBW7kHrWL8K5z0Et/6VkQBdNWmWpzs5yOAPbqE6smUlO+0B3l5dDBVlFIxlA5032qKUyRythrHoO6Ni6W7DhT5Huu4GSAdRr5j9syQO/BOGr6SDTyUcaGZj6AejJGyAZgENm9pglM39Ww1bTXcgW7Mvyo63B3Fvjyz3el1Qim8IxruycAv8zsysragEPdVwldHTVC8COuiUTIDtJ73n/eJttRSZfK5767kJHnngDtDVCySD0rpfs3Gx2bUBN1lB9SBkzNRUlD+wytXUqpGxY8PUTkNJRSKbQN1OqHijh90DP6iZyAxdBifKSCehMwXeqYcu7m235d6HeEcK/keUGk9Io+MqdqCa/+NkkGrg3LJzwBJyfCgRS/ZWyMhlHaBmF3gMyUuOBUJtfpTO5OvZBHZtYqTq7TLFfJoYRnkAoCenwQ83ItdQomX5Dm830NNLvVfQ/+my+DrfeGhsBGGufAVoelvSm+UN3WlvnO5b85m2bmrhD4mVQdmSOq0TGGLa22Ag4U1sV8HvNEgsTqf1bbdnBv0fn2eLMlUT6wEvm/CWgvUExHC4dBlOoPWAoXeFg6jXPOqw180Xg/GUHTwKPq6ttpXzbCVpUEAMQhuKpgIQhtZas2AVzbpv13bbEWr8OBF9EpK3rK2vwlxpsQ7pUUom0QvyPUPNAHXlggXz/p6tLlZPY6fkDrxRKpR7TobYZzh9+zbCnkDwQltB8Sx/rqz47jIQGvQtMzh8FnTJju5fMnKobdYFZqqsf2KRvl+4Seh00h8Sky1HEnrAJ+z/Yv4qVSesLTXW7AAAAAElFTkSuQmCC"/></div>`;
-              }
-              else {
-                ratingSectionRating.innerHTML += `<div style="display: inline-block; overflow: hidden; width: ${ratingStarWidth}px; height: ${ratingStarWidth}px; vertical-align: text-bottom;"><img style="width: ${ratingStarWidth}px;" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAElUlEQVRoge2ZbYhUZRTHf+fO6houRFjpqosvIaFmGTs7IxKBYO+UXxJ8wU3EoAjRpQ9hnwoq/BTZFwkqLIIgiaAEK4LGzQhdQXPd1lJYS83tRdK03Z3Zuc+/D+u6M7Mzd+aO99qH9sAwnDvPc87//5z/c57nMjBhEzZhsZm6NyXVvSEZZw6LK7B626fh7DQIPObawvcvxJHHiyMoALJnQU1ITeT9Z+JKE0sFdHJLI9lLfaBmEKDfmDpprs3bPRR1rngqkPtrXQF4kKZzObcmjlTxEBBbwXEV/Mi3ueel6CseOQF1r38QdE8R+JHPXRxfuzLqfNFXwOhA48CP+Mp3RJ8uQlPP2sU46wbZCHBKiCDMLbUlHx+LKme0FXDWMQa+bBUMpy1RpoysAvp+w+14+Z9BU8bAQzEZAGVpSMy1xXv6o8gbXQUS+edAUyrqf8xvJDcc2cEWSQXUt3EKVwZPI6YXA4fyvvuDgcY5tnzP4PXmrouAetunkcs2Y7QAM/C4H6eNV3+lsoQKnkm7MXXirJ+EO8PQ5POW/iT0fWkcAZ3YMA/fZmHebJyawbWAZoBmg81EbtY1nUNpl6kEtnhMia8xfwg4B/pVjrOY3+/hncH88zg7i++ds/SXfRUJqGfjq6AXy65goCQq+dVjqFqMEsJCOxLJzPZRzA3Fy6/jmHykROCKBneZKlUYG6M6YnjSmULI4yXU074K3IdIN5WyL+tfn2TCxPDNtMWS+3cFEgDQD+uX4bQXMe3GS6ZsnqzJtVuq86NSrBW7kHrWL8K5z0Et/6VkQBdNWmWpzs5yOAPbqE6smUlO+0B3l5dDBVlFIxlA5032qKUyRythrHoO6Ni6W7DhT5Huu4GSAdRr5j9syQO/BOGr6SDTyUcaGZj6AejJGyAZgENm9pglM39Ww1bTXcgW7Mvyo63B3Fvjyz3el1Qim8IxruycAv8zsysragEPdVwldHTVC8COuiUTIDtJ73n/eJttRSZfK5767kJHnngDtDVCySD0rpfs3Gx2bUBN1lB9SBkzNRUlD+wytXUqpGxY8PUTkNJRSKbQN1OqHijh90DP6iZyAxdBifKSCehMwXeqYcu7m235d6HeEcK/keUGk9Io+MqdqCa/+NkkGrg3LJzwBJyfCgRS/ZWyMhlHaBmF3gMyUuOBUJtfpTO5OvZBHZtYqTq7TLFfJoYRnkAoCenwQ83ItdQomX5Dm830NNLvVfQ/+my+DrfeGhsBGGufAVoelvSm+UN3WlvnO5b85m2bmrhD4mVQdmSOq0TGGLa22Ag4U1sV8HvNEgsTqf1bbdnBv0fn2eLMlUT6wEvm/CWgvUExHC4dBlOoPWAoXeFg6jXPOqw180Xg/GUHTwKPq6ttpXzbCVpUEAMQhuKpgIQhtZas2AVzbpv13bbEWr8OBF9EpK3rK2vwlxpsQ7pUUom0QvyPUPNAHXlggXz/p6tLlZPY6fkDrxRKpR7TobYZzh9+zbCnkDwQltB8Sx/rqz47jIQGvQtMzh8FnTJju5fMnKobdYFZqqsf2KRvl+4Seh00h8Sky1HEnrAJ+z/Yv4qVSesLTXW7AAAAAElFTkSuQmCC"/></div>`;
+            var ratingStarWidth = 22;
+            for (var i = reviewedProd.editor_rating; i > 0; i--) {
+              if (i < 1) {
+                ratingSectionRating.innerHTML += "<div style=\"display: inline-block; overflow: hidden; width: " + ratingStarWidth * i + "px; height: " + ratingStarWidth + "px; vertical-align: text-bottom; margin-right: 1em;\"><img style=\"max-width: none; width: " + ratingStarWidth + "px;\" alt=\"\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAElUlEQVRoge2ZbYhUZRTHf+fO6houRFjpqosvIaFmGTs7IxKBYO+UXxJ8wU3EoAjRpQ9hnwoq/BTZFwkqLIIgiaAEK4LGzQhdQXPd1lJYS83tRdK03Z3Zuc+/D+u6M7Mzd+aO99qH9sAwnDvPc87//5z/c57nMjBhEzZhsZm6NyXVvSEZZw6LK7B626fh7DQIPObawvcvxJHHiyMoALJnQU1ITeT9Z+JKE0sFdHJLI9lLfaBmEKDfmDpprs3bPRR1rngqkPtrXQF4kKZzObcmjlTxEBBbwXEV/Mi3ueel6CseOQF1r38QdE8R+JHPXRxfuzLqfNFXwOhA48CP+Mp3RJ8uQlPP2sU46wbZCHBKiCDMLbUlHx+LKme0FXDWMQa+bBUMpy1RpoysAvp+w+14+Z9BU8bAQzEZAGVpSMy1xXv6o8gbXQUS+edAUyrqf8xvJDcc2cEWSQXUt3EKVwZPI6YXA4fyvvuDgcY5tnzP4PXmrouAetunkcs2Y7QAM/C4H6eNV3+lsoQKnkm7MXXirJ+EO8PQ5POW/iT0fWkcAZ3YMA/fZmHebJyawbWAZoBmg81EbtY1nUNpl6kEtnhMia8xfwg4B/pVjrOY3+/hncH88zg7i++ds/SXfRUJqGfjq6AXy65goCQq+dVjqFqMEsJCOxLJzPZRzA3Fy6/jmHykROCKBneZKlUYG6M6YnjSmULI4yXU074K3IdIN5WyL+tfn2TCxPDNtMWS+3cFEgDQD+uX4bQXMe3GS6ZsnqzJtVuq86NSrBW7kHrWL8K5z0Et/6VkQBdNWmWpzs5yOAPbqE6smUlO+0B3l5dDBVlFIxlA5032qKUyRythrHoO6Ni6W7DhT5Huu4GSAdRr5j9syQO/BOGr6SDTyUcaGZj6AejJGyAZgENm9pglM39Ww1bTXcgW7Mvyo63B3Fvjyz3el1Qim8IxruycAv8zsysragEPdVwldHTVC8COuiUTIDtJ73n/eJttRSZfK5767kJHnngDtDVCySD0rpfs3Gx2bUBN1lB9SBkzNRUlD+wytXUqpGxY8PUTkNJRSKbQN1OqHijh90DP6iZyAxdBifKSCehMwXeqYcu7m235d6HeEcK/keUGk9Io+MqdqCa/+NkkGrg3LJzwBJyfCgRS/ZWyMhlHaBmF3gMyUuOBUJtfpTO5OvZBHZtYqTq7TLFfJoYRnkAoCenwQ83ItdQomX5Dm830NNLvVfQ/+my+DrfeGhsBGGufAVoelvSm+UN3WlvnO5b85m2bmrhD4mVQdmSOq0TGGLa22Ag4U1sV8HvNEgsTqf1bbdnBv0fn2eLMlUT6wEvm/CWgvUExHC4dBlOoPWAoXeFg6jXPOqw180Xg/GUHTwKPq6ttpXzbCVpUEAMQhuKpgIQhtZas2AVzbpv13bbEWr8OBF9EpK3rK2vwlxpsQ7pUUom0QvyPUPNAHXlggXz/p6tLlZPY6fkDrxRKpR7TobYZzh9+zbCnkDwQltB8Sx/rqz47jIQGvQtMzh8FnTJju5fMnKobdYFZqqsf2KRvl+4Seh00h8Sky1HEnrAJ+z/Yv4qVSesLTXW7AAAAAElFTkSuQmCC\"/></div>";
+              } else {
+                ratingSectionRating.innerHTML += "<div style=\"display: inline-block; overflow: hidden; width: " + ratingStarWidth + "px; height: " + ratingStarWidth + "px; vertical-align: text-bottom;\"><img style=\"width: " + ratingStarWidth + "px;\" alt=\"\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAElUlEQVRoge2ZbYhUZRTHf+fO6houRFjpqosvIaFmGTs7IxKBYO+UXxJ8wU3EoAjRpQ9hnwoq/BTZFwkqLIIgiaAEK4LGzQhdQXPd1lJYS83tRdK03Z3Zuc+/D+u6M7Mzd+aO99qH9sAwnDvPc87//5z/c57nMjBhEzZhsZm6NyXVvSEZZw6LK7B626fh7DQIPObawvcvxJHHiyMoALJnQU1ITeT9Z+JKE0sFdHJLI9lLfaBmEKDfmDpprs3bPRR1rngqkPtrXQF4kKZzObcmjlTxEBBbwXEV/Mi3ueel6CseOQF1r38QdE8R+JHPXRxfuzLqfNFXwOhA48CP+Mp3RJ8uQlPP2sU46wbZCHBKiCDMLbUlHx+LKme0FXDWMQa+bBUMpy1RpoysAvp+w+14+Z9BU8bAQzEZAGVpSMy1xXv6o8gbXQUS+edAUyrqf8xvJDcc2cEWSQXUt3EKVwZPI6YXA4fyvvuDgcY5tnzP4PXmrouAetunkcs2Y7QAM/C4H6eNV3+lsoQKnkm7MXXirJ+EO8PQ5POW/iT0fWkcAZ3YMA/fZmHebJyawbWAZoBmg81EbtY1nUNpl6kEtnhMia8xfwg4B/pVjrOY3+/hncH88zg7i++ds/SXfRUJqGfjq6AXy65goCQq+dVjqFqMEsJCOxLJzPZRzA3Fy6/jmHykROCKBneZKlUYG6M6YnjSmULI4yXU074K3IdIN5WyL+tfn2TCxPDNtMWS+3cFEgDQD+uX4bQXMe3GS6ZsnqzJtVuq86NSrBW7kHrWL8K5z0Et/6VkQBdNWmWpzs5yOAPbqE6smUlO+0B3l5dDBVlFIxlA5032qKUyRythrHoO6Ni6W7DhT5Huu4GSAdRr5j9syQO/BOGr6SDTyUcaGZj6AejJGyAZgENm9pglM39Ww1bTXcgW7Mvyo63B3Fvjyz3el1Qim8IxruycAv8zsysragEPdVwldHTVC8COuiUTIDtJ73n/eJttRSZfK5767kJHnngDtDVCySD0rpfs3Gx2bUBN1lB9SBkzNRUlD+wytXUqpGxY8PUTkNJRSKbQN1OqHijh90DP6iZyAxdBifKSCehMwXeqYcu7m235d6HeEcK/keUGk9Io+MqdqCa/+NkkGrg3LJzwBJyfCgRS/ZWyMhlHaBmF3gMyUuOBUJtfpTO5OvZBHZtYqTq7TLFfJoYRnkAoCenwQ83ItdQomX5Dm830NNLvVfQ/+my+DrfeGhsBGGufAVoelvSm+UN3WlvnO5b85m2bmrhD4mVQdmSOq0TGGLa22Ag4U1sV8HvNEgsTqf1bbdnBv0fn2eLMlUT6wEvm/CWgvUExHC4dBlOoPWAoXeFg6jXPOqw180Xg/GUHTwKPq6ttpXzbCVpUEAMQhuKpgIQhtZas2AVzbpv13bbEWr8OBF9EpK3rK2vwlxpsQ7pUUom0QvyPUPNAHXlggXz/p6tLlZPY6fkDrxRKpR7TobYZzh9+zbCnkDwQltB8Sx/rqz47jIQGvQtMzh8FnTJju5fMnKobdYFZqqsf2KRvl+4Seh00h8Sky1HEnrAJ+z/Yv4qVSesLTXW7AAAAAElFTkSuQmCC\"/></div>";
               }
             }
-            ratingSectionRating.innerHTML += `<span style="font-size: x-large; font-weight: 600">${reviewedProd.editor_rating}</span>/5.0`;
+            ratingSectionRating.innerHTML += "<span style=\"font-size: x-large; font-weight: 600\">" + reviewedProd.editor_rating + "</span>/5.0";
             ratingSectionRating.style.fontSize = "22px";
             ratingSection.appendChild(ratingSectionRating);
 
             {%- if reviewedProd.owner_reviews > 0 -%}
-            let ratingSectionOwnerReviewsWrapper = document.createElement("p");
-            let ratingSectionOwnerReviews = document.createElement("a");
-            ratingSectionOwnerReviews.setAttribute("href", `${reviewedProd.absolute_url}#customer-reviews`);
-            ratingSectionOwnerReviews.innerHTML = "Read owner reviews &#187;"
-            ratingSectionOwnerReviewsWrapper.appendChild(ratingSectionOwnerReviews);
-            ratingSection.appendChild(ratingSectionOwnerReviewsWrapper);
+              var ratingSectionOwnerReviewsWrapper = document.createElement("p");
+              var ratingSectionOwnerReviews = document.createElement("a");
+              ratingSectionOwnerReviews.setAttribute("href", reviewedProd.absolute_url + "#customer-reviews");
+              ratingSectionOwnerReviews.innerHTML = "Read owner reviews &#187;";
+              ratingSectionOwnerReviewsWrapper.appendChild(ratingSectionOwnerReviews);
+              ratingSection.appendChild(ratingSectionOwnerReviewsWrapper);
             {%- endif -%}
 
             ratingSection.appendChild(document.createElement("hr"));
 
-            let ratingSectionCTAWrapper = document.createElement("div");
+            var ratingSectionCTAWrapper = document.createElement("div");
             ratingSectionCTAWrapper.style.width = "100%";
             ratingSectionCTAWrapper.style.display = "flex";
             ratingSectionCTAWrapper.style.flexWrap = "wrap";
@@ -157,34 +157,34 @@
             ratingSectionCTAWrapper.style.alignItems = "center";
             ratingSection.appendChild(ratingSectionCTAWrapper);
 
-            let ratingSectionCTAPrice = document.createElement("span");
-            ratingSectionCTAPrice.innerText = `$ ${reviewedProd.price}`;
+            var ratingSectionCTAPrice = document.createElement("span");
+            ratingSectionCTAPrice.innerText = "$ " + reviewedProd.price;
             ratingSectionCTAWrapper.appendChild(ratingSectionCTAPrice);
-            let ratingSectionCTABtn = document.createElement("a");
+            var ratingSectionCTABtn = document.createElement("a");
             ratingSectionCTABtn.classList.add("btn");
-            ratingSectionCTABtn.setAttribute("href", `${reviewedProd.absolute_url}`);
+            ratingSectionCTABtn.setAttribute("href", "" + reviewedProd.absolute_url);
             ratingSectionCTABtn.innerText = "Buy now";
             ratingSectionCTAWrapper.appendChild(ratingSectionCTABtn);
-            
+
             ratingWrapper.appendChild(ratingImage);
             ratingWrapper.appendChild(ratingSection);
-            
+
             articleDOM.body.insertBefore(ratingWrapper, articleDOM.body.firstChild);
-            
-            let proConsWrapper = document.createElement("div");
+
+            var proConsWrapper = document.createElement("div");
             proConsWrapper.style.width = "100%";
             proConsWrapper.style.padding = "10px";
             proConsWrapper.style.display = "flex";
             proConsWrapper.style.flexWrap = "wrap";
             proConsWrapper.style.justifyContent = "center";
-            let prosWrapper = document.createElement("div");
+            var prosWrapper = document.createElement("div");
             prosWrapper.style.width = "50%";
             prosWrapper.style.flexGrow = "1";
             prosWrapper.style.minWidth = "330px";
             prosWrapper.style.padding = "20px";
             prosWrapper.style.borderRight = "#e8eae7 solid 1px";
             prosWrapper.style.borderBottom = "#e8eae7 solid 1px";
-            let consWrapper = document.createElement("div");
+            var consWrapper = document.createElement("div");
             consWrapper.style.width = "50%";
             consWrapper.style.flexGrow = "1";
             consWrapper.style.minWidth = "330px";
@@ -192,24 +192,23 @@
             consWrapper.style.borderRight = "#e8eae7 solid 1px";
             consWrapper.style.borderBottom = "#e8eae7 solid 1px";
 
-            let h2Elements = articleDOM.querySelectorAll("h2");
-            let prosH2;
-            let prosList;
-            let consH2;
-            let consList;
-            const regex = /[^a-z]/g;
-            h2Elements.forEach(h => {
-              if(h.innerText.toLowerCase().replace(regex,"") == "pros" && h.nextElementSibling.nodeName == "UL"){
+            var h2Elements = articleDOM.querySelectorAll("h2");
+            var prosH2;
+            var prosList;
+            var consH2;
+            var consList;
+            var regex = /[^a-z]/g;
+            h2Elements.forEach(function (h) {
+              if (h.innerText.toLowerCase().replace(regex, "") == "pros" && h.nextElementSibling.nodeName == "UL") {
                 prosH2 = h;
                 prosList = h.nextElementSibling;
-              }
-              else if(h.innerText.toLowerCase().replace(regex,"") == "cons" && h.nextElementSibling.nodeName == "UL"){
+              } else if (h.innerText.toLowerCase().replace(regex, "") == "cons" && h.nextElementSibling.nodeName == "UL") {
                 consH2 = h;
                 consList = h.nextElementSibling;
               }
             });
 
-            if(prosH2 && prosList && consH2 && consList) {
+            if (prosH2 && prosList && consH2 && consList) {
               prosH2.remove();
               prosList.remove();
               consH2.remove();
@@ -227,11 +226,11 @@
             }
 
             articleDOM.body.insertBefore(proConsWrapper, ratingWrapper.nextElementSibling);
-            
-            let ctaOptionsWrapper = document.createElement("p");
+
+            var ctaOptionsWrapper = document.createElement("p");
             ctaOptionsWrapper.style.margin = "3em auto 1em auto";
             ctaOptionsWrapper.style.textAlign = "center";
-            let ctaOptionsBuyItNow = document.createElement("a");
+            var ctaOptionsBuyItNow = document.createElement("a");
             ctaOptionsBuyItNow.classList.add("btn");
             ctaOptionsBuyItNow.style.display = "inline-block";
             ctaOptionsBuyItNow.style.margin = "0em 1em";
@@ -239,8 +238,8 @@
             ctaOptionsBuyItNow.setAttribute("href", reviewedProd.absolute_url);
             ctaOptionsBuyItNow.innerText = "Buy it now";
             ctaOptionsWrapper.appendChild(ctaOptionsBuyItNow);
-            if(reviewedProd.available) {
-              let ctaOptionsReviewIt = document.createElement("a");
+            if (reviewedProd.available) {
+              var ctaOptionsReviewIt = document.createElement("a");
               ctaOptionsReviewIt.classList.add("btn");
               ctaOptionsReviewIt.style.display = "inline-block";
               ctaOptionsReviewIt.style.background = "none";
@@ -248,14 +247,13 @@
               ctaOptionsReviewIt.style.color = "#7ac142";
               ctaOptionsReviewIt.style.margin = "1em 1em";
               ctaOptionsReviewIt.style.width = "18em";
-              ctaOptionsReviewIt.setAttribute("href", `${reviewedProd.absolute_url}#customer-reviews`);
+              ctaOptionsReviewIt.setAttribute("href", reviewedProd.absolute_url + "#customer-reviews");
               ctaOptionsReviewIt.innerText = "Review it yourself";
               ctaOptionsWrapper.appendChild(ctaOptionsReviewIt);
             }
 
             articleDOM.body.appendChild(ctaOptionsWrapper);
 
-            // insert formatted DOM into body of article
             reviewArticleElement.innerHTML = articleDOM.body.innerHTML;
           </script>
           <style>
