@@ -294,6 +294,7 @@
         </div>
       {%- endif -%}
     </div>
+	{%- comment -%}{% elsif article.url contains 'how-to' %}{%- endcomment -%}
   {% else %}
     <div class="rte rte--indented-images" id="articleBody">
       {{ article.content }}

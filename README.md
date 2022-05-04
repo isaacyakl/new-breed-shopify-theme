@@ -9,6 +9,13 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-05-03] 2.9.0
+
+-  Improve article microdata
+   -  News blogs use [Article](https://developers.google.com/search/docs/advanced/structured-data/article) -> [schema.org/NewsArticle](https://schema.org/NewsArticle)
+   -  Add general article structured data to blog pages
+   -  Review blogs use [Product w/ Review Snippet](https://developers.google.com/search/docs/advanced/structured-data/product#single-product-page)
+
 ### [2022-04-12] 2.8.2
 
 -  Add FAQs auto formatting
@@ -95,10 +102,7 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 ## To-Do
 
 -  Improve article microdata
-   -  News blogs use [Article](https://developers.google.com/search/docs/advanced/structured-data/article) -> [schema.org/NewsArticle](https://schema.org/NewsArticle)
-   -  Add general article structured data to blog pages
-   -  Review blogs use [Product w/ Review Snippet](https://developers.google.com/search/docs/advanced/structured-data/product#single-product-page)
-   -  How-to blogs user [How-to](https://developers.google.com/search/docs/advanced/structured-data/how-to)
+   -  How-to blogs use [How-to](https://developers.google.com/search/docs/advanced/structured-data/how-to)
 -  Update visible SKU when product options are changed
 -  Add FAQs searchbox
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
