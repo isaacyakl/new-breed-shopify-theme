@@ -15,6 +15,13 @@ Shopify Theme Kit References:
    -  News blogs use [Article](https://developers.google.com/search/docs/advanced/structured-data/article) -> [schema.org/NewsArticle](https://schema.org/NewsArticle)
    -  Add general article structured data to blog pages
    -  Review blogs use [Product w/ Review Snippet](https://developers.google.com/search/docs/advanced/structured-data/product#single-product-page)
+-  Improve blog and article styling
+   -  Hide article tags paragraph if no tags
+   -  Add review article parser
+-  Add automatic campaign URL queries
+-  Improve product description HTML sanitization
+-  Remove redundancy in mfg-sku detection
+-  FAQ page template fixes
 
 ### [2022-04-12] 2.8.2
 
