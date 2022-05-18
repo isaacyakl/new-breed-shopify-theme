@@ -9,6 +9,14 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-05-17] 2.9.1
+
+-  Improve product review articles
+   -  Show review button even if product is unavailable
+   -  Change "Buy now" to "See it" button
+   -  Center heading info
+-  Remove extra theme presets
+
 ### [2022-05-03] 2.9.0
 
 -  Improve article microdata
