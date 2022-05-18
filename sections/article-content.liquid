@@ -239,19 +239,18 @@
             ctaOptionsBuyItNow.setAttribute("href", reviewedProd.absolute_url);
             ctaOptionsBuyItNow.innerText = "Buy it now";
             ctaOptionsWrapper.appendChild(ctaOptionsBuyItNow);
-            if (reviewedProd.available) {
-              var ctaOptionsReviewIt = document.createElement("a");
-              ctaOptionsReviewIt.classList.add("btn");
-              ctaOptionsReviewIt.style.display = "inline-block";
-              ctaOptionsReviewIt.style.background = "none";
-              ctaOptionsReviewIt.style.border = "1px solid #7ac142";
-              ctaOptionsReviewIt.style.color = "#7ac142";
-              ctaOptionsReviewIt.style.margin = "1em 1em";
-              ctaOptionsReviewIt.style.width = "18em";
-              ctaOptionsReviewIt.setAttribute("href", reviewedProd.absolute_url + "#customer-reviews");
-              ctaOptionsReviewIt.innerText = "Review it yourself";
-              ctaOptionsWrapper.appendChild(ctaOptionsReviewIt);
-            }
+
+            var ctaOptionsReviewIt = document.createElement("a");
+            ctaOptionsReviewIt.classList.add("btn");
+            ctaOptionsReviewIt.style.display = "inline-block";
+            ctaOptionsReviewIt.style.background = "none";
+            ctaOptionsReviewIt.style.border = "1px solid #7ac142";
+            ctaOptionsReviewIt.style.color = "#7ac142";
+            ctaOptionsReviewIt.style.margin = "1em 1em";
+            ctaOptionsReviewIt.style.width = "18em";
+            ctaOptionsReviewIt.setAttribute("href", reviewedProd.absolute_url + "#customer-reviews");
+            ctaOptionsReviewIt.innerText = "Review it yourself";
+            ctaOptionsWrapper.appendChild(ctaOptionsReviewIt);
 
             articleDOM.body.appendChild(ctaOptionsWrapper);
 
