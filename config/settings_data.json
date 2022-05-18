@@ -1,27 +1,53 @@
 {
   "current": {
     "color_header_bg": "#030303",
-    "color_header_links": "#fff",
-    "color_body_bg": "#f7f7f7",
-    "color_content_bg": "#fff",
+    "color_header_links": "#ffffff",
+    "color_body_bg": "#e8eae7",
+    "color_content_bg": "#f5f5f5",
     "color_body_headings": "#030303",
     "color_body_text": "#666",
-    "color_button_bg": "#006eff",
-    "color_button_text": "#fff",
+    "color_button_bg": "#7ac142",
+    "color_button_text": "#0d1507",
     "color_footer_bg": "#030303",
-    "color_footer_text": "#fff",
-    "color_hero_text": "#fff",
-    "color_hero_bg": "#006eff",
+    "color_footer_text": "#ffffff",
+    "color_hero_text": "#ffffff",
+    "color_hero_bg": "#7ac142",
     "type_accent_family": "unica_one_n4",
     "type_accent_spacing": true,
     "type_accent_transform": true,
-    "type_base_family": "karla_n4",
+    "type_base_family": "din_next_n4",
     "type_base_size": "16px",
     "type_nav_size": "14px",
     "type_nav_spacing": true,
     "type_nav_transform": true,
-    "checkout_accent_color": "#006eff",
-    "checkout_button_color": "#006eff",
+    "product_images_padding": true,
+    "product_vendor_enable": true,
+    "social_facebook_link": "https:\/\/www.facebook.com\/Newbreedpb\/",
+    "social_twitter_link": "https:\/\/twitter.com\/NewBreedStore",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/instagram.com\/newbreedpb",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCevmiU5_ThooMJx_c9h4YFQ",
+    "social_vimeo_link": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "favicon": "shopify:\/\/shop_images\/NBPBnA_Icon_6adc57c1-b90b-48ab-8c67-3b4d50f122ad.gif",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/new-new-breed-logo-lime_f7db3b08-7400-4314-9bad-894b5ad76124.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#7ac142",
+    "checkout_button_color": "#7ac142",
+    "checkout_error_color": "#e32c2b",
     "checkout_banner_background_color": "#fff",
     "checkout_call_to_action_color": "#006eff",
     "checkout_use_header_image": false,
@@ -30,53 +56,122 @@
       "slideshow": {
         "type": "slideshow",
         "blocks": {
-          "placeholder-0": {
+          "4f3d5b22-d42e-4f99-ab93-b4805ff98ee9": {
             "type": "slide",
-            "settings": {}
+            "settings": {
+              "image": "shopify:\/\/shop_images\/PE_Etha3.jpg",
+              "image_position": "center top",
+              "title": "L3V3L ⇑",
+              "button_label": "",
+              "button_link": "shopify:\/\/products\/eclipse-etha-3"
+            }
           },
-          "placeholder-1": {
+          "1598851170423": {
             "type": "slide",
-            "settings": {}
+            "settings": {
+              "image": "shopify:\/\/shop_images\/PolarStar_HPA_Engines-web-banner.jpg",
+              "image_position": "center center",
+              "title": "",
+              "button_label": "",
+              "button_link": "shopify:\/\/collections\/polarstar-engines-engine-kits"
+            }
+          },
+          "1598077921296": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Hi-Capa-web-banner.jpg",
+              "image_position": "center center",
+              "title": "",
+              "button_label": "",
+              "button_link": "shopify:\/\/collections\/hi-capa-airsoft-pistols"
+            }
+          },
+          "2ad79448-4631-41cd-9556-5993633a5462": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Umarex_TR50_Website_Banner.jpg",
+              "image_position": "center top",
+              "title": "",
+              "button_label": "",
+              "button_link": "shopify:\/\/collections\/umarex-t4e-tr50-paintball-revolver"
+            }
           }
         },
         "block_order": [
-          "placeholder-0",
-          "placeholder-1"
+          "4f3d5b22-d42e-4f99-ab93-b4805ff98ee9",
+          "1598851170423",
+          "1598077921296",
+          "2ad79448-4631-41cd-9556-5993633a5462"
         ],
-        "settings": {}
+        "settings": {
+          "hero_home_height": "adapt",
+          "hero_home_auto": true,
+          "hero_home_auto_speed": 3
+        }
       },
       "footer": {
         "type": "footer",
         "blocks": {
-          "linklist": {
-            "type": "menu",
-            "settings": {}
-          },
           "social": {
             "type": "social",
-            "settings": {}
+            "settings": {
+              "title": "Follow us",
+              "align": "left"
+            }
+          },
+          "1598076535573": {
+            "type": "menu",
+            "settings": {
+              "link_list": "company"
+            }
+          },
+          "linklist": {
+            "type": "menu",
+            "settings": {
+              "link_list": "blogs"
+            }
+          },
+          "1598068299419": {
+            "type": "newsletter",
+            "settings": {
+              "color_newsletter_input": "#1a1a1a",
+              "color_newsletter_input_text": "#ffffff",
+              "title": "Be in the know",
+              "subheading": "<p>Promotions, new products, sales, and more—directly to your inbox!<\/p>"
+            }
           }
         },
         "block_order": [
+          "social",
+          "1598076535573",
           "linklist",
-          "social"
+          "1598068299419"
         ],
-        "settings": {}
+        "settings": {
+          "show_payment_icons": true
+        }
       },
       "featured-collections": {
         "type": "featured-collections",
+        "disabled": true,
         "blocks": {
           "featured-collections-0": {
             "type": "collection",
-            "settings": {}
+            "settings": {
+              "collection": "airsoft-guns"
+            }
           },
           "featured-collections-1": {
             "type": "collection",
-            "settings": {}
+            "settings": {
+              "collection": "paintball-guns"
+            }
           },
           "featured-collections-2": {
             "type": "collection",
-            "settings": {}
+            "settings": {
+              "collection": "staff-picks"
+            }
           }
         },
         "block_order": [
@@ -84,38 +179,263 @@
           "featured-collections-1",
           "featured-collections-2"
         ],
-        "settings": {}
+        "settings": {
+          "stretch_collection_image": false
+        }
       },
       "featured-products": {
         "type": "featured-products",
         "settings": {
-          "collection": "frontpage"
+          "collection": "guns",
+          "rows": 1
         }
       },
-      "image-content": {
-        "type": "image-content",
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/new-breed-website-color-logo-lockup_1abca4a0-36e9-44af-8cce-75d532be3ebb.png",
+          "logo_max_width": "450",
+          "main_linklist": "main-menu",
+          "promo_bar_enable": false,
+          "promo_bar_text": "⚠️ COVID-19 restrictions may delay orders 2-4 weeks.",
+          "promo_bar_link": ""
+        }
+      },
+      "collection-filters": {
+        "type": "collection-filters",
+        "settings": {
+          "product_tags_enable": true,
+          "product_sorting_enable": true
+        }
+      },
+      "featured-products-subsection": {
+        "type": "featured-products-subsection",
+        "settings": {
+          "collection": "staff-picks"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": true
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "enable_ajax": true,
+          "stock_enable": true,
+          "enable_payment_button": true,
+          "social_sharing_products": true
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "You may also like"
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/new-new-breed-logo-lime_f7db3b08-7400-4314-9bad-894b5ad76124.png",
+          "logo_max_width": "100",
+          "header": "Coming Soon"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "newsletter_enable": true,
+          "newsletter_form_heading": "Be the first to know when we launch.",
+          "newsletter_form_subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+          "newsletter_placeholder": "Email address"
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "show_share_buttons": true,
+          "social_message": "Spread the word"
+        }
+      },
+      "1598076894688": {
+        "type": "advanced-content",
         "blocks": {
-          "image-content-0": {
-            "type": "image_block",
-            "settings": {}
-          },
-          "image-content-1": {
-            "type": "text_block",
-            "settings": {}
+          "1598152391315": {
+            "type": "html",
+            "settings": {
+              "code": "<div class=\"section-block__header text-center\">\n        <h4 class=\"h1--mini section-block__title\">Instagram<\/h4>\n<a href=\"https:\/\/instagram.com\/newbreedpb\" title=\"Visit our Insta\" target=\"_blank\" style=\"color: #333\">@NEWBREEDPB<\/a>\n      <\/div>\n<div class=\"covet-pics-gallery\" data-id=\"124181\"><\/div>",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
           }
         },
         "block_order": [
-          "image-content-0",
-          "image-content-1"
+          "1598152391315"
         ],
-        "settings": {}
+        "settings": {
+        }
+      },
+      "1598077077406": {
+        "type": "link-block",
+        "blocks": {
+          "1598572437608": {
+            "type": "link_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Artboard_2.jpg",
+              "link": "shopify:\/\/pages\/why-trade",
+              "cta_label": "Trade Towards A New gun"
+            }
+          },
+          "1598077077406-0": {
+            "type": "link_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/NBPA_Gift_Card_no_logo_b6c9bea8-4385-4117-80a6-562f5fdfb195.jpg",
+              "link": "shopify:\/\/collections\/e-gift-cards",
+              "cta_label": "e-Gift Cards"
+            }
+          }
+        },
+        "block_order": [
+          "1598572437608",
+          "1598077077406-0"
+        ],
+        "settings": {
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "layout": "list",
+          "sort": "products_high"
+        }
+      },
+      "article-content": {
+        "type": "article-content",
+        "settings": {
+          "social_sharing_blog": true
+        }
+      },
+      "1598151453854": {
+        "type": "quotes",
+        "blocks": {
+          "1598151453854-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>I definitely will be going back here to purchase all my paintball products in the future.<\/p>",
+              "author": "Chris Alvarez"
+            }
+          },
+          "1598151453854-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>The staff are knowledgeable and very helpful. I brought my paintball gun in for service and I'm very satisfied.<\/p>",
+              "author": "Mark McGraw"
+            }
+          },
+          "1598151587943": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>I've been buying my gear from this store for a long time...suggest this store everyday of the week.<\/p>",
+              "author": "Reid Raby"
+            }
+          },
+          "1598151591834": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>They were straightforward, honest, and very helpful. They fixed the problem my pb gun was having on the spot.<\/p>",
+              "author": "Dan Bendul"
+            }
+          }
+        },
+        "block_order": [
+          "1598151453854-0",
+          "1598151453854-1",
+          "1598151587943",
+          "1598151591834"
+        ],
+        "settings": {
+          "title": "Reviews"
+        }
+      },
+      "info-bar": {
+        "type": "info-bar",
+        "settings": {
+        }
+      },
+      "16244914971c1d9a42": {
+        "type": "featured-products",
+        "settings": {
+          "collection": "newly-added-products",
+          "rows": 2
+        }
+      },
+      "16324601796d7e9a64": {
+        "type": "link-block",
+        "blocks": {
+          "16324601796d7e9a64-0": {
+            "type": "link_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Umarex_Glocks.jpg",
+              "link": "https:\/\/newbreedpb.com\/collections\/glock-pistol-replica-models",
+              "cta_label": "Glocks by Umarex"
+            }
+          },
+          "16324601796d7e9a64-1": {
+            "type": "link_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Elite_Force_AEGs.jpg",
+              "link": "shopify:\/\/collections\/elite-force-aegs",
+              "cta_label": "AEGs by Elite Force"
+            }
+          },
+          "c25e3866-e93c-419e-b4ff-b8aa3e73bf3b": {
+            "type": "link_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Hk_Army_Tank_Web_Banner.jpg",
+              "link": "https:\/\/newbreedpb.com\/collections\/hk-army-air-tanks",
+              "cta_label": "HPA Tanks by HK"
+            }
+          }
+        },
+        "block_order": [
+          "16324601796d7e9a64-0",
+          "16324601796d7e9a64-1",
+          "c25e3866-e93c-419e-b4ff-b8aa3e73bf3b"
+        ],
+        "settings": {
+        }
+      },
+      "1642547535cd1f78c4": {
+        "type": "rich-text",
+        "settings": {
+          "home_page_full_width": false,
+          "section_title": "Friendly, reliable Paintball & Airsoft store",
+          "text": "<p>Find quality guns and gear. Get help with all of your questions or repair needs. Take advantage of top-dollar trade-in value, free shipping, and competitive warranties. We are the largest Paintball store based in the New York\/New Jersey area.<\/p>",
+          "text_size": "medium"
+        }
+      },
+      "1646682581fd1a3e6d": {
+        "type": "featured-products",
+        "settings": {
+          "collection": "polarstar-engines-engine-kits",
+          "rows": 1
+        }
       }
     },
     "content_for_index": [
       "slideshow",
+      "1642547535cd1f78c4",
+      "16324601796d7e9a64",
+      "1646682581fd1a3e6d",
+      "1598077077406",
+      "16244914971c1d9a42",
       "featured-collections",
-      "featured-products",
-      "image-content"
+      "1598076894688",
+      "1598151453854"
     ]
   },
   "presets": {
@@ -152,51 +472,60 @@
           "blocks": {
             "placeholder-0": {
               "type": "slide",
-              "settings": {}
+              "settings": {
+              }
             },
             "placeholder-1": {
               "type": "slide",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
             "placeholder-0",
             "placeholder-1"
           ],
-          "settings": {}
+          "settings": {
+          }
         },
         "footer": {
           "type": "footer",
           "blocks": {
             "linklist": {
               "type": "menu",
-              "settings": {}
+              "settings": {
+              }
             },
             "social": {
               "type": "social",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
             "linklist",
             "social"
           ],
-          "settings": {}
+          "settings": {
+          }
         },
         "featured-collections": {
           "type": "featured-collections",
           "blocks": {
             "featured-collections-0": {
               "type": "collection",
-              "settings": {}
+              "settings": {
+              }
             },
             "featured-collections-1": {
               "type": "collection",
-              "settings": {}
+              "settings": {
+              }
             },
             "featured-collections-2": {
               "type": "collection",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
@@ -204,7 +533,8 @@
             "featured-collections-1",
             "featured-collections-2"
           ],
-          "settings": {}
+          "settings": {
+          }
         },
         "featured-products": {
           "type": "featured-products",
@@ -217,18 +547,21 @@
           "blocks": {
             "image-content-0": {
               "type": "image_block",
-              "settings": {}
+              "settings": {
+              }
             },
             "image-content-1": {
               "type": "text_block",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
             "image-content-0",
             "image-content-1"
           ],
-          "settings": {}
+          "settings": {
+          }
         }
       },
       "content_for_index": [
@@ -237,62 +570,6 @@
         "featured-products",
         "image-content"
       ]
-    },
-    "Outdoors": {
-      "checkout_accent_color": "#f4743c",
-      "checkout_banner_background_color": "#fff",
-      "checkout_button_color": "#f4743c",
-      "checkout_call_to_action_color": "#f4743c",
-      "checkout_use_header_image": false,
-      "color_body_bg": "#f7f7f7",
-      "color_body_headings": "#1a1a1a",
-      "color_body_text": "#666",
-      "color_button_bg": "#c04f1d",
-      "color_button_text": "#fff",
-      "color_content_bg": "#ffffff",
-      "color_footer_bg": "#213236",
-      "color_footer_text": "#fff",
-      "color_header_bg": "#213236",
-      "color_header_links": "#ffffff",
-      "color_hero_bg": "#f4743c",
-      "color_hero_text": "#fff",
-      "color_newsletter_input": "#425154",
-      "type_accent_family": "lora_n7",
-      "type_accent_spacing": false,
-      "type_accent_transform": false,
-      "type_base_family": "roboto_n4",
-      "type_base_size": "14px",
-      "type_nav_size": "15px",
-      "type_nav_spacing": false,
-      "type_nav_transform": false
-    },
-    "Boxing": {
-      "checkout_accent_color": "#d8232f",
-      "checkout_banner_background_color": "#fff",
-      "checkout_button_color": "#d8232f",
-      "checkout_call_to_action_color": "#d8232f",
-      "checkout_use_header_image": false,
-      "color_body_bg": "#f0f0f0",
-      "color_body_headings": "#222222",
-      "color_body_text": "#666",
-      "color_button_bg": "#d8232f",
-      "color_button_text": "#fff",
-      "color_content_bg": "#ffffff",
-      "color_footer_bg": "#222222",
-      "color_footer_text": "#ffffff",
-      "color_header_bg": "#222222",
-      "color_header_links": "#ffffff",
-      "color_hero_bg": "#d8232f",
-      "color_hero_text": "#fff",
-      "color_newsletter_input": "#303030",
-      "type_accent_family": "open_sans_condensed_n7",
-      "type_accent_spacing": false,
-      "type_accent_transform": true,
-      "type_base_family": "source_sans_pro_n4",
-      "type_base_size": "17px",
-      "type_nav_size": "14px",
-      "type_nav_spacing": true,
-      "type_nav_transform": true
     }
   }
 }
