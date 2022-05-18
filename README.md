@@ -108,10 +108,6 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 
 ## To-Do
 
--  Product Review Blog Article
-   -  Make product title link to product page
-   -  Remove blank line between product title and editor rating headers
-   -  Center H1 and blog metadata
 -  Improve article microdata
    -  How-to blogs use [How-to](https://developers.google.com/search/docs/advanced/structured-data/how-to)
 -  Update visible SKU when product options are changed
