@@ -117,7 +117,6 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 ## To-Do
 
 -  Add free product option at checkout
--  Make secondary button text color visible on mobile [instead of grey on black](https://newbreedpb.com/cart)
 -  Auto description formatting
    -  "Feature" headings to proper case h2 etc.
 -  Improve article microdata
