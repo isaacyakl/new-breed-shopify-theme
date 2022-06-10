@@ -170,7 +170,11 @@
 
 		{% include 'cscode_discount' %}
 		
-	  {% render 'judgeme_core' %}
+		{% if template == 'cart' %}
+			<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+		{% endif %}
+
+	  	{% render 'judgeme_core' %}
 </head>
 
 	<body class="template-{{ request.page_type | handle }}">

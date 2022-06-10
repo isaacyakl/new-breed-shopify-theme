@@ -116,7 +116,6 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 
 ## To-Do
 
--  Add free product option at checkout
 -  Auto description formatting
    -  "Feature" headings to proper case h2 etc.
 -  Improve article microdata
@@ -158,9 +157,7 @@ Whenever changes are being made follow this procedure.
 1. Start `theme watch` (or `npm run watch`).
 2. Preview the changes by running `theme open` (or `npm run preview`) or by finding the new theme in the Shopify backend and selecting "Customize" on it.
 
-```
-NOTE: Some theme code changes made for 3rd party Shopify applications (e.g. variant code swatches, up sells) may not be preview-able unless you view the theme via the "Customize" button/view.
-```
+   **Note:** Some theme code changes made for 3rd party Shopify applications (e.g. variant code swatches, up sells) may not be preview-able unless you view the theme via the "Customize" button/view.
 
 3. Edit and commit changes as necessary.
 

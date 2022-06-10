@@ -135,6 +135,46 @@
       </div>
     {% endif %}
   </div>
+  
+  {% if settings.nbpa_product_offers_enabled %}
+    <div class="product-recommendations">
+      <div class="page-width">
+        <div class="section-block__header text-center">
+          <h4 class="h1--mini section-block__title">Offers</h4>
+          Based on your shopping cart
+        </div>
+        <div class="section-block">
+          <div class="grid grid--no-gutters grid--uniform">
+            {%- if settings.nbpa_product_offer1 != blank -%}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {% render 'product-card', product: settings.nbpa_product_offer1, nbpa_product_offer_msg: settings.nbpa_product_offer1_msg %}
+            </div>
+            {% endif %}
+            {%- if settings.nbpa_product_offer2 != blank -%}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {% render 'product-card', product: settings.nbpa_product_offer2, nbpa_product_offer_msg: settings.nbpa_product_offer2_msg %}
+            </div>
+            {% endif %}
+            {%- if settings.nbpa_product_offer3 != blank -%}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {% render 'product-card', product: settings.nbpa_product_offer3, nbpa_product_offer_msg: settings.nbpa_product_offer3_msg %}
+            </div>
+            {% endif %}
+            {%- if settings.nbpa_product_offer4 != blank -%}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {% render 'product-card', product: settings.nbpa_product_offer4, nbpa_product_offer_msg: settings.nbpa_product_offer4_msg %}
+            </div>
+            {% endif %}
+            {%- if settings.nbpa_product_offer5 != blank -%}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {% render 'product-card', product: settings.nbpa_product_offer5, nbpa_product_offer_msg: settings.nbpa_product_offer5_msg %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
   <script id="CartProductTemplate" type="text/template">
     {% raw %}

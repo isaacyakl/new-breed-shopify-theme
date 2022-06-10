@@ -6,7 +6,7 @@
   it is from search results.
 {% endcomment %}
 
-{% assign product_tags = product.tags | downcase %}
+{%- assign product_tags = product.tags | downcase -%}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <a href="{{ product.url | within: collection }}" class="product-card">
@@ -68,39 +68,46 @@
 
     {% if product.available %}
       <div class="product-card__price">
+        {%- if nbpa_product_offer_msg != blank -%}
+          <s>
+        {%- endif -%}
         {% if product.compare_at_price > product.price %}
-          {% comment %}
-            Product is on sale
-          {% endcomment %}
-          {% if product.price_varies %}
-            {% assign sale_price = product.price | money_without_trailing_zeros %}
-            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+            {% comment %}
+              Product is on sale
+            {% endcomment %}
+            {% if product.price_varies %}
+              {% assign sale_price = product.price | money_without_trailing_zeros %}
+              {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+            {% else %}
+              <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              <s class="product-card__regular-price">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
+
+              <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+              {{ product.price | money_without_trailing_zeros }}
+            {% endif %}
+
           {% else %}
-            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-            <s class="product-card__regular-price">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
+            {% comment %}
+              Not on sale, but could still have varying prices
+            {% endcomment %}
+            {% if product.price_varies %}
+              {% assign price = product.price | money_without_trailing_zeros %}
+              {{ 'products.product.from_text_html' | t: price: price }}
+            {% else %}
+              <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              {{ product.price | money_without_trailing_zeros }}
+            {% endif %}
 
-            <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
-            {{ product.price | money_without_trailing_zeros }}
           {% endif %}
-
-        {% else %}
-          {% comment %}
-            Not on sale, but could still have varying prices
-          {% endcomment %}
-          {% if product.price_varies %}
-            {% assign price = product.price | money_without_trailing_zeros %}
-            {{ 'products.product.from_text_html' | t: price: price }}
-          {% else %}
-            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-            {{ product.price | money_without_trailing_zeros }}
-          {% endif %}
-
-        {% endif %}
-        {%- unless product.price_varies -%}
-          {%- if current_variant.unit_price_measurement -%}
-            {% include 'product-unit-price', product_variant: current_variant, wrapper_class: "product-card__unit-price" %}
-          {%- endif -%}
-        {%- endunless -%}
+          {%- unless product.price_varies -%}
+            {%- if current_variant.unit_price_measurement -%}
+              {% include 'product-unit-price', product_variant: current_variant, wrapper_class: "product-card__unit-price" %}
+            {%- endif -%}
+          {%- endunless -%}
+        {%- if nbpa_product_offer_msg != blank -%}
+            </s>
+            <br><strong class="product-single__available">{{ nbpa_product_offer_msg }}</strong>
+        {%- endif -%}
       </div>
     {% else %}
         {%- if product_tags contains 'archive' or product_tags contains 'archived' or product_tags contains 'discontinued' -%}
@@ -128,3 +135,27 @@
     
   </div>
 </a>
+{%- if product.available and template == 'cart' -%}
+  <product-form class="product-form section-block--padding" style="justify-content: center; align-content: center;">
+    {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    {{ form | payment_terms }}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <div class="product-form__buttons">
+      <button
+              type="submit"
+              name="add"
+              class="btn btn--narrow product-form__submit button button--full-width button--secondary"
+              {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+              >
+        {%- if product.selected_or_first_available_variant.available -%}
+        {{ 'products.product.add_to_cart' | t }}
+        
+        {%- endif -%}
+        
+      </button>
+      
+    </div>
+    {%- endform -%}
+  </product-form>
+{%- endif -%}

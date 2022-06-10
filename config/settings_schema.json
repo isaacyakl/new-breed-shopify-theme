@@ -1559,5 +1559,128 @@
         }
       }
     ]
+  },
+  {
+    "name": {
+      "da": "Vogn",
+      "de": "Wagen",
+      "en": "Cart",
+      "es": "Carro",
+      "fi": "Kärry",
+      "fr": "Chariot",
+      "hi": "कार्ट",
+      "it": "Carrello",
+      "ja": "カート",
+      "ko": "카트",
+      "nb": "Handlevogn",
+      "nl": "Winkelwagen",
+      "pt-BR": "Carrinho",
+      "pt-PT": "Carrinho",
+      "sv": "Vagn",
+      "th": "รถเข็น",
+      "zh-CN": "大车",
+      "zh-TW": "大車"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "en": "Shopping Cart Offers"
+        }
+      },
+      {
+        "type": "paragraph",
+        "content": "Offer discounted or free products when a certain order amount is reached in a customer's cart. These settings will only display the products; for them to automatically apply when added to cart, you must create an [automatic discount](https://help.shopify.com/en/manual/discounts/discount-types#automatic-discounts)."
+      },
+      {
+        "type": "checkbox",
+        "id": "nbpa_product_offers_enabled",
+        "label": {
+          "en": "Enable cart offers"
+        },
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Offer 1"
+        }
+      },
+      {
+        "type": "product",
+        "id": "nbpa_product_offer1",
+        "label": "Product offered"
+      },
+      {
+        "type": "text",
+        "id": "nbpa_product_offer1_msg",
+        "label": "Offer message:",
+        "info": "(e.g. Free, 15% off, Now $5)"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Offer 2"
+        }
+      },
+      {
+        "type": "product",
+        "id": "nbpa_product_offer2",
+        "label": "Product offered"
+      },
+      {
+        "type": "text",
+        "id": "nbpa_product_offer2_msg",
+        "label": "Offer message:"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Offer 3"
+        }
+      },
+      {
+        "type": "product",
+        "id": "nbpa_product_offer3",
+        "label": "Product offered"
+      },
+      {
+        "type": "text",
+        "id": "nbpa_product_offer3_msg",
+        "label": "Offer message:"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Offer 4"
+        }
+      },
+      {
+        "type": "product",
+        "id": "nbpa_product_offer4",
+        "label": "Product offered"
+      },
+      {
+        "type": "text",
+        "id": "nbpa_product_offer4_msg",
+        "label": "Offer message:"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Offer 5"
+        }
+      },
+      {
+        "type": "product",
+        "id": "nbpa_product_offer5",
+        "label": "Product offered"
+      },
+      {
+        "type": "text",
+        "id": "nbpa_product_offer5_msg",
+        "label": "Offer message:"
+      }
+    ]
   }
 ]
