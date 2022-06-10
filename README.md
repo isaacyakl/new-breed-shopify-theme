@@ -9,6 +9,12 @@ Shopify Theme Kit References:
 
 ## Versions
 
+### [2022-06-09] 2.10.0
+
+-  Add in cart product offers section:
+   `Online Store > Themes > Customize (New Breed 2.10.0) > Theme Settings > Cart > Shopping Cart Offers`
+-  Make secondary button text visible against background color
+
 ### [2022-05-17] 2.9.1
 
 -  Improve product review articles
