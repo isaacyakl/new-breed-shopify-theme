@@ -131,7 +131,7 @@ Add second-image peek feature and support for pre-order release and back-in-stoc
 -  Set max-height of product images on product pages to be less than 50% of viewport: [https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black](https://newbreedpb.com/products/umarex-walther-ppq-gbb-magazine-black)
 -  Create custom gift card templates for different holidays - https://shopify.dev/themes/architecture/templates/gift-card-liquid
 
--  Add Back Order and Pre-Order Release date tag
+-  Add Back Order and Pre-Order Release date custom meta field
 -  Turn off Back Order and Pre-Order if Release date tag is reached or item is in stock
 
 -  Add newbreed-image-not-available.jpg to collections and other items that generate a featured image (e.g. product image in product-template.liquid)
