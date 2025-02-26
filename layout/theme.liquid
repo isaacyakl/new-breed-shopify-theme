@@ -175,6 +175,7 @@
 		{% endif %}
 
 	  	{% render 'judgeme_core' %}
+{% include 'store-credit-launcher' %}
 </head>
 
 	<body class="template-{{ request.page_type | handle }}">
@@ -226,5 +227,6 @@
 			<li id="a11y-selection-message">{{ "general.accessibility.selection_help" | t }}</li>
 			<li id="a11y-slideshow-info">{{- 'homepage.hero.navigation_instructions' | t -}}</li>
 		</ul>
-	</body>
+	{% include 'store-credit-launcher' %}
+</body>
 </html>
